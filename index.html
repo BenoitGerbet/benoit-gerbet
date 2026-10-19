@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Portfolio | Élève-Ingénieur ENSEEIHT & EDF Hydro</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Tailwind Config for Hydro Energy Custom Colors -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        edf: {
+                            blue: '#001A3D',
+                            lightBlue: '#0055A5',
+                            orange: '#FF5A00',
+                            cyan: '#00D2FF',
+                            hydro: '#10B981',
+                        },
+                        n7: {
+                            red: '#C8102E',
+                            dark: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .hydro-gradient-text {
+            background: linear-gradient(135deg, #00D2FF 0%, #10B981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .edf-gradient-bg {
+            background: linear-gradient(135deg, #001A3D 0%, #003366 50%, #0055A5 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans flex flex-col justify-between selection:bg-cyan-500 selection:text-slate-950">
+
+    <!-- Ambient Glow Background Effects -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <div class="fixed bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+    <!-- HEADER / NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 glass-card border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo & Dual Identity -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-emerald-500 flex items-center justify-center text-slate-950 font-bold text-xl shadow-lg shadow-cyan-500/20">
+                        N7
+                    </div>
+                    <div>
+                        <div class="font-bold text-lg tracking-tight flex items-center gap-2">
+                            <span>Élève-Ingénieur</span>
+                            <span class="text-xs bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 px-2 py-0.5 rounded-full font-medium">EDF Hydro</span>
+                        </div>
+                        <p class="text-xs text-slate-400" data-i18n="nav.subtitle">ENSEEIHT Toulouse • Promotion N7</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Tabs -->
+                <nav class="hidden md:flex space-x-1 lg:space-x-2">
+                    <button onclick="switchTab('home')" id="tab-btn-home" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-cyan-400 bg-slate-800/80 border border-slate-700/50 flex items-center gap-1.5">
+                        <i data-lucide="home" class="w-4 h-4"></i> <span data-i18n="nav.home">Accueil</span>
+                    </button>
+                    <button onclick="switchTab('career')" id="tab-btn-career" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800/50 flex items-center gap-1.5">
+                        <i data-lucide="briefcase" class="w-4 h-4"></i> <span data-i18n="nav.career">Carrière</span>
+                    </button>
+                    <button onclick="switchTab('projects')" id="tab-btn-projects" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800/50 flex items-center gap-1.5">
+                        <i data-lucide="folder-git-2" class="w-4 h-4"></i> <span data-i18n="nav.projects">Projets</span>
+                    </button>
+                    <button onclick="switchTab('mobility')" id="tab-btn-mobility" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800/50 flex items-center gap-1.5">
+                        <i data-lucide="globe" class="w-4 h-4"></i> <span data-i18n="nav.mobility">Mobilité</span>
+                    </button>
+                    <button onclick="switchTab('engagement')" id="tab-btn-engagement" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800/50 flex items-center gap-1.5">
+                        <i data-lucide="heart" class="w-4 h-4"></i> <span data-i18n="nav.engagement">Civique</span>
+                    </button>
+                    <button onclick="switchTab('sports')" id="tab-btn-sports" class="nav-btn px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-800/50 flex items-center gap-1.5">
+                        <i data-lucide="activity" class="w-4 h-4"></i> <span data-i18n="nav.sports">Sport</span>
+                    </button>
+                </nav>
+
+                <!-- Language Switcher & Controls -->
+                <div class="flex items-center space-x-3">
+                    <button id="lang-toggle" onclick="toggleLanguage()" class="flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-lg border border-slate-700 transition duration-200 text-xs font-semibold">
+                        <i data-lucide="languages" class="w-4 h-4 text-cyan-400"></i>
+                        <span id="current-lang-text">FR</span>
+                    </button>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-900 px-4 pt-2 pb-4 space-y-2">
+            <button onclick="switchTab('home')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-2"><i data-lucide="home" class="w-4 h-4 text-cyan-400"></i> <span data-i18n="nav.home">Accueil</span></button>
+            <button onclick="switchTab('career')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-2"><i data-lucide="briefcase" class="w-4 h-4 text-cyan-400"></i> <span data-i18n="nav.career">Carrière</span></button>
+            <button onclick="switchTab('projects')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-2"><i data-lucide="folder-git-2" class="w-4 h-4 text-cyan-400"></i> <span data-i18n="nav.projects">Projets</span></button>
+            <button onclick="switchTab('mobility')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-2"><i data-lucide="globe" class="w-4 h-4 text-cyan-400"></i> <span data-i18n="nav.mobility">Mobilité</span></button>
+            <button onclick="switchTab('engagement')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-2"><i data-lucide="heart" class="w-4 h-4 text-cyan-400"></i> <span data-i18n="nav.engagement">Civique</span></button>
+            <button onclick="switchTab('sports')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-cyan-400"></i> <span data-i18n="nav.sports">Sport</span></button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full">
+
+        <!-- ==================== TAB 1: ACCUEIL / HOME ==================== -->
+        <section id="content-home" class="tab-content space-y-12">
+            <!-- Hero Banner -->
+            <div class="relative overflow-hidden rounded-3xl p-8 sm:p-12 border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 shadow-2xl">
+                <div class="absolute top-0 right-0 -mt-12 -mr-12 w-80 h-80 bg-cyan-500/10 rounded-full blur-2xl"></div>
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-medium">
+                            <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+                            <span data-i18n="home.badge">Formation Promotionnelle Continu • EDF Hydro x ENSEEIHT</span>
+                        </div>
+                        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
+                            <span data-i18n="home.title_prefix">Élève-Ingénieur en 3ème année à</span>
+                            <span class="hydro-gradient-text block mt-1">l'ENSEEIHT Toulouse</span>
+                        </h1>
+                        <p class="text-slate-300 text-base sm:text-lg leading-relaxed" data-i18n="home.bio">
+                            Salarié en CDI chez **EDF Hydro depuis novembre 2013** (plus de 10 ans d'expérience industrielle), je suis actuellement en reprise d'études en formation continu promotionnelle pour obtenir mon diplôme d'ingénieur. Ce parcours allie l'expertise terrain des aménagements hydroélectriques aux compétences de pointe en ingénierie de l'énergie et transition écologique.
+                        </p>
+                        <div class="flex flex-wrap gap-4 pt-2">
+                            <button onclick="switchTab('career')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition shadow-lg shadow-cyan-500/25 flex items-center gap-2 text-sm">
+                                <i data-lucide="file-text" class="w-4 h-4"></i>
+                                <span data-i18n="home.btn_career">Explorer ma carrière & CV</span>
+                            </button>
+                            <button onclick="switchTab('projects')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold px-6 py-3 rounded-xl transition flex items-center gap-2 text-sm">
+                                <i data-lucide="cpu" class="w-4 h-4 text-emerald-400"></i>
+                                <span data-i18n="home.btn_projects">Projets d'Ingénierie</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Specs / Badges -->
+                    <div class="lg:col-span-4 flex flex-col gap-4">
+                        <div class="glass-card p-5 rounded-2xl border border-slate-800 flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-black text-white">10+ <span data-i18n="home.years">Ans</span></div>
+                                <div class="text-xs text-slate-400" data-i18n="home.stat1_desc">Expérience CDI chez EDF Hydro</div>
+                            </div>
+                        </div>
+                        <div class="glass-card p-5 rounded-2xl border border-slate-800 flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-600/20 text-cyan-400 flex items-center justify-center font-bold">
+                                <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-black text-white">3ème <span data-i18n="home.year_academic">Année</span></div>
+                                <div class="text-xs text-slate-400" data-i18n="home.stat2_desc">Diplôme d'Ingénieur ENSEEIHT (N7)</div>
+                            </div>
+                        </div>
+                        <div class="glass-card p-5 rounded-2xl border border-slate-800 flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center font-bold">
+                                <i data-lucide="droplet" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-black text-white">100%</div>
+                                <div class="text-xs text-slate-400" data-i18n="home.stat3_desc">Énergie Renouvelable & Hydroélectricité</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Values & Core Skills -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card p-6 rounded-2xl border border-slate-800/80 hover:border-cyan-500/50 transition">
+                    <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-4">
+                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2" data-i18n="home.val1_title">Rigueur & Sécurité Industrielle</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="home.val1_desc">
+                        Culture approfondie de la sûreté des ouvrages hydrauliques et de l'exploitation des centrales à haute valeur stratégique.
+                    </p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border border-slate-800/80 hover:border-emerald-500/50 transition">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-4">
+                        <i data-lucide="leaf" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2" data-i18n="home.val2_title">Transition Énergétique</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="home.val2_desc">
+                        Engagement pour la flexibilité du réseau électrique et le développement durable des énergies renouvelables pilotables.
+                    </p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border border-slate-800/80 hover:border-blue-500/50 transition">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4">
+                        <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2" data-i18n="home.val3_title">Agilité & Reprise d'Études</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="home.val3_desc">
+                        Capacité d'adaptation, curiosité intellectuelle et conciliation de hauts standards académiques avec la réalité terrain.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== TAB 2: CARRIÈRE & CV / CAREER ==================== -->
+        <section id="content-career" class="tab-content hidden space-y-10">
+            <!-- Header section -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-slate-800">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-white flex items-center gap-3">
+                        <i data-lucide="briefcase" class="w-8 h-8 text-cyan-400"></i>
+                        <span data-i18n="career.title">Parcours Professionnel & Formation</span>
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1" data-i18n="career.subtitle">Chronologie de mon évolution au sein d'EDF Hydro et de l'ENSEEIHT</p>
+                </div>
+
+                <!-- CV Download Controls -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <button onclick="downloadCV('FR')" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 transition">
+                        <i data-lucide="download" class="w-4 h-4 text-cyan-400"></i>
+                        <span>CV Français (PDF)</span>
+                    </button>
+                    <button onclick="downloadCV('EN')" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 transition">
+                        <i data-lucide="download" class="w-4 h-4 text-emerald-400"></i>
+                        <span>English Resume (PDF)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Timeline Grid -->
+            <div class="relative border-l-2 border-slate-800 ml-4 md:ml-8 pl-6 md:pl-10 space-y-12">
+                
+                <!-- Timeline Item 1: ENSEEIHT -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] md:-left-[47px] top-0 w-6 h-6 rounded-full bg-cyan-500 border-4 border-slate-950 flex items-center justify-center text-slate-950 shadow-lg shadow-cyan-500/50">
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <span class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-full text-xs font-semibold" data-i18n="career.item1_date">2023 - 2026 (En cours)</span>
+                            <span class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Toulouse, France</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Élève-Ingénieur – ENSEEIHT Toulouse (N7)</h3>
+                        <p class="text-cyan-400 text-sm font-medium mb-3" data-i18n="career.item1_sub">Formation Continu Promotionnelle / Reprise d'Études</p>
+                        <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
+                            <li data-i18n="career.item1_bullet1">Spécialisation en Génie Électrique, Hydraulique & Mécanique des Fluides.</li>
+                            <li data-i18n="career.item1_bullet2">Modélisation numérique des réseaux, conversion d'énergie, automatique et systèmes intelligents.</li>
+                            <li data-i18n="career.item1_bullet3">Projets transversaux d'ingénierie appliqués aux enjeux de décarbonation et de flexibilité hydroélectrique.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2: EDF Hydro - Progression -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] md:-left-[47px] top-0 w-6 h-6 rounded-full bg-emerald-500 border-4 border-slate-950 flex items-center justify-center text-slate-950 shadow-lg shadow-emerald-500/50">
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <span class="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full text-xs font-semibold" data-i18n="career.item2_date">Novembre 2013 - Présent (Salarié CDI)</span>
+                            <span class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> France (Unité de Production Hydroélectrique)</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">EDF Hydro – Parcours & Responsabilités Techniques</h3>
+                        <p class="text-emerald-400 text-sm font-medium mb-3" data-i18n="career.item2_sub">Poste de Technicien d'Exploitation & Maintenance vers Ingénierie</p>
+                        <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
+                            <li data-i18n="career.item2_bullet1">Supervision, maintenance et conduite des aménagements hydroélectriques (barrages, usines de haute et moyenne chute).</li>
+                            <li data-i18n="career.item2_bullet2">Gestion des risques industriels, consignations électriques et hydrauliques, analyse de défaillance sur groupes turbogénérateurs.</li>
+                            <li data-i18n="career.item2_bullet3">Participation aux projets de rénovation des automatismes et d'optimisation des rendements de turbines (Francis, Kaplan, Pelton).</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CV Interactive Preview Section -->
+            <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-4">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i data-lucide="eye" class="w-5 h-5 text-cyan-400"></i>
+                        <span data-i18n="career.preview_title">Aperçu Synthétique du CV</span>
+                    </h3>
+                    <span class="text-xs text-slate-400" data-i18n="career.updated">Mis à jour 2026</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-950/60 p-5 rounded-xl border border-slate-800/60 text-sm">
+                    <div class="space-y-2">
+                        <div class="font-semibold text-cyan-400" data-i18n="career.cv_skills_title">Compétences Techniques Keys :</div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Hydroélectricité</span>
+                            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Génie Électrique</span>
+                            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Turbines & Hydraulique</span>
+                            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Automatique / SCADA</span>
+                            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Analyse de Données</span>
+                            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300">Sécurité des Ouvrages</span>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="font-semibold text-emerald-400" data-i18n="career.cv_lang_title">Langues & Certifications :</div>
+                        <ul class="text-slate-300 text-xs space-y-1">
+                            <li>• Français : Langue maternelle</li>
+                            <li>• Anglais : Courant (Niveau C1 / TOEIC validé ENSEEIHT)</li>
+                            <li>• Habilitations Électriques & Sûreté EDF Hydro</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== TAB 3: PROJETS / PROJECTS ==================== -->
+        <section id="content-projects" class="tab-content hidden space-y-8">
+            <!-- Header & Filter Controls -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-slate-800">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-white flex items-center gap-3">
+                        <i data-lucide="folder-git-2" class="w-8 h-8 text-cyan-400"></i>
+                        <span data-i18n="projects.title">Projets d'Ingénierie & Réalisations</span>
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1" data-i18n="projects.subtitle">Travaux académiques ENSEEIHT et projets industriels chez EDF Hydro</p>
+                </div>
+
+                <!-- Filter Category Buttons -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterProjects('all')" class="project-filter-btn active-filter px-3 py-1.5 rounded-lg text-xs font-medium bg-cyan-500 text-slate-950 font-bold transition" data-filter="all" data-i18n="projects.filter_all">Tous</button>
+                    <button onclick="filterProjects('hydro')" class="project-filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition" data-filter="hydro" data-i18n="projects.filter_hydro">Hydroélectricité</button>
+                    <button onclick="filterProjects('energy')" class="project-filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition" data-filter="energy" data-i18n="projects.filter_energy">Énergie & Réseaux</button>
+                    <button onclick="filterProjects('modeling')" class="project-filter-btn px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition" data-filter="modeling" data-i18n="projects.filter_modeling">Modélisation/Info</button>
+                </div>
+            </div>
+
+            <!-- Project Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+                
+                <!-- Project 1 -->
+                <div class="project-card glass-card rounded-2xl p-6 border border-slate-800 hover:border-cyan-500/50 transition flex flex-col justify-between" data-category="hydro">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-md text-xs font-semibold">EDF Hydro x N7</span>
+                            <i data-lucide="droplets" class="w-5 h-5 text-cyan-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white" data-i18n="projects.p1_title">Optimisation du Rendement Turbine Francis</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="projects.p1_desc">
+                            Étude des phénomènes de cavitation et modélisation hydraulique pour maximiser l'efficacité énergétique lors des variations de charges réseau.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800/80 space-y-3">
+                        <div class="flex flex-wrap gap-1">
+                            <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Hydraulique</span>
+                            <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Matlab/Simulink</span>
+                            <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Francis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass-card rounded-2xl p-6 border border-slate-800 hover:border-emerald-500/50 transition flex flex-col justify-between" data-category="energy">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-md text-xs font-semibold">Projet Académique N7</span>
+                            <i data-lucide="zap" class="w-5 h-5 text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white" data-i18n="projects.p2_title">Supervision Micro-Réseau & STEP</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="projects.p2_desc">
+                            Dimensionnement et régulation d'une Station de Transfert d'Énergie par Pompage (STEP) couplée à un parc éolien local.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800/80 space-y-3">
+                        <div class="flex flex-wrap gap-1">
+                            <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Smart Grid</span>
+                            <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Automatique</span>
+                            <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Stockage</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card glass-card rounded-2xl p-6 border border-slate-800 hover:border-blue-500/50 transition flex flex-col justify-between" data-category="modeling">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded-md text-xs font-semibold">EDF Hydro</span>
+                            <i data-lucide="cpu" class="w-5 h-5 text-blue-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white" data-i18n="projects.p3_title">Automatisme & Démarrage Noir (Black-Start)</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed" data-i18n="projects.p3_desc">
+                            Mise à jour des procédures de réalimentation du réseau électrique en cas de blackout à partir de centrales hydroélectriques autonomes.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800/80 space-y-3">
+                        <div class="flex flex-wrap gap-1">
+                            <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">SCADA</span>
+                            <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Réseau TSO</span>
+                            <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Sûreté</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==================== TAB 4: MOBILITÉ / MOBILITY ==================== -->
+        <section id="content-mobility" class="tab-content hidden space-y-8">
+            <div class="pb-6 border-b border-slate-800">
+                <h2 class="text-3xl font-extrabold text-white flex items-center gap-3">
+                    <i data-lucide="globe" class="w-8 h-8 text-cyan-400"></i>
+                    <span data-i18n="mobility.title">Mobilité Internationale & Inter-Sites</span>
+                </h2>
+                <p class="text-slate-400 text-sm mt-1" data-i18n="mobility.subtitle">Immersions professionnelles, déplacements stratégiques et ouvertures à l'international</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Card 1: Déplacements Ouvrages Hydro -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center">
+                        <i data-lucide="mountain" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white" data-i18n="mobility.m1_title">Interventions Inter-Sites Hydroélectriques</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed" data-i18n="mobility.m1_desc">
+                        Déplacements et immersions sur divers aménagement hydrauliques (Haute-Chute Pyrénées/Alpes, Fil de l'eau Vallée du Rhône, Massif Central) pour audits, arrêts programmés et expertises d'ingénierie.
+                    </p>
+                    <div class="inline-flex items-center gap-2 text-xs text-cyan-400 font-semibold">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span data-i18n="mobility.m1_tag">Polyvalence terrain & adaptabilité multi-sites</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Mobilité Internationale & Académique -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                        <i data-lucide="plane" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white" data-i18n="mobility.m2_title">Ouverture Internationale & Réseau Européen</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed" data-i18n="mobility.m2_desc">
+                        Visites d'installations énergétiques européennes, participation aux échanges N7 internationaux et veille technologique sur le stockage par pompage en Europe (Suisse, Espagne).
+                    </p>
+                    <div class="inline-flex items-center gap-2 text-xs text-emerald-400 font-semibold">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span data-i18n="mobility.m2_tag">Pratique régulière de l'anglais technique</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== TAB 5: ENGAGEMENT CIVIQUE / CIVIC ENGAGEMENT ==================== -->
+        <section id="content-engagement" class="tab-content hidden space-y-8">
+            <div class="pb-6 border-b border-slate-800">
+                <h2 class="text-3xl font-extrabold text-white flex items-center gap-3">
+                    <i data-lucide="heart" class="w-8 h-8 text-cyan-400"></i>
+                    <span data-i18n="engagement.title">Engagement Civique & RSE</span>
+                </h2>
+                <p class="text-slate-400 text-sm mt-1" data-i18n="engagement.subtitle">Sensibilisation, tutorat et actions pour la transition citoyenne</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                        <i data-lucide="users" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white" data-i18n="engagement.e1_title">Tutorat & Parrainage</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed" data-i18n="engagement.e1_desc">
+                        Accompagnement des jeunes alternants et techniciens chez EDF Hydro. Partage d'expérience sur la reprise d'études promotionnelle.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+                    <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center">
+                        <i data-lucide="sun" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white" data-i18n="engagement.e2_title">Sensibilisation Énergie & Climat</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed" data-i18n="engagement.e2_desc">
+                        Animation d'ateliers sur la biodiversité autour des retenues d'eau et sensibilisation au rôle de l'hydroélectricité dans la décarbonation.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center">
+                        <i data-lucide="shield" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white" data-i18n="engagement.e3_title">Éthique & Sécurité Industrielle</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed" data-i18n="engagement.e3_desc">
+                        Ambassadeur des bonnes pratiques de sécurité et de la prévention des risques au travail sur les chantiers hydroélectriques.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== TAB 6: SPORT & ACTIVITÉS / SPORTS ==================== -->
+        <section id="content-sports" class="tab-content hidden space-y-8">
+            <div class="pb-6 border-b border-slate-800">
+                <h2 class="text-3xl font-extrabold text-white flex items-center gap-3">
+                    <i data-lucide="activity" class="w-8 h-8 text-cyan-400"></i>
+                    <span data-i18n="sports.title">Sport & Activités Extérieures</span>
+                </h2>
+                <p class="text-slate-400 text-sm mt-1" data-i18n="sports.subtitle">Valeurs d'endurance, de gestion de l'effort et passerelles vers le métier d'ingénieur</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Sport 1: Randonnée & Montagne -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 flex gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex-shrink-0 flex items-center justify-center">
+                        <i data-lucide="compass" class="w-6 h-6"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-lg font-bold text-white" data-i18n="sports.s1_title">Randonnée & Haute Montagne (Pyrénées/Alpes)</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed" data-i18n="sports.s1_desc">
+                            Pratique régulière du trail et des ascensions en haute montagne. Une école d'humilité face aux éléments naturels qui résonne directement avec le respect des ouvrages hydrauliques.
+                        </p>
+                        <div class="text-[11px] text-cyan-400 font-medium" data-i18n="sports.s1_synergy">
+                            ↳ Passerelle Ingénieur : Préparation rigoureuse, gestion des risques et prise de décision en environnement complexe.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sport 2: Sports d'Équipe & Endurance -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 flex gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex-shrink-0 flex items-center justify-center">
+                        <i data-lucide="trophy" class="w-6 h-6"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-lg font-bold text-white" data-i18n="sports.s2_title">Sports Collectifs & Endurance</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed" data-i18n="sports.s2_desc">
+                            Pratique du vélo de route et participation aux activités sportives inter-entreprises EDF / ENSEEIHT.
+                        </p>
+                        <div class="text-[11px] text-emerald-400 font-medium" data-i18n="sports.s2_synergy">
+                            ↳ Passerelle Ingénieur : Esprit de groupe, solidarité dans l'effort et persévérance sur le long terme.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800 bg-slate-950/80 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+            <div class="flex items-center gap-2">
+                <span>© 2026 E-Portfolio Élève-Ingénieur</span>
+                <span>•</span>
+                <span class="text-cyan-400">ENSEEIHT Toulouse x EDF Hydro</span>
+            </div>
+            
+            <!-- Links / Socials -->
+            <div class="flex items-center space-x-4">
+                <button onclick="copyToClipboard('votre-email@edf.fr')" class="hover:text-cyan-400 transition flex items-center gap-1">
+                    <i data-lucide="mail" class="w-4 h-4"></i> <span>Contact Email</span>
+                </button>
+                <a href="https://linkedin.com" target="_blank" class="hover:text-cyan-400 transition flex items-center gap-1">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i> <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com" target="_blank" class="hover:text-cyan-400 transition flex items-center gap-1">
+                    <i data-lucide="github" class="w-4 h-4"></i> <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATION FOR ACTIONS -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-cyan-500 text-slate-950 px-4 py-3 rounded-xl shadow-2xl font-bold text-xs flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+        <span id="toast-message">Action effectuée</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // State variables
+        let currentLang = 'FR';
+        let currentTab = 'home';
+
+        // Translation Dictionary
+        const translations = {
+            FR: {
+                "nav.subtitle": "ENSEEIHT Toulouse • Promotion N7",
+                "nav.home": "Accueil",
+                "nav.career": "Carrière",
+                "nav.projects": "Projets",
+                "nav.mobility": "Mobilité",
+                "nav.engagement": "Civique",
+                "nav.sports": "Sport",
+
+                "home.badge": "Formation Promotionnelle Continu • EDF Hydro x ENSEEIHT",
+                "home.title_prefix": "Élève-Ingénieur en 3ème année à",
+                "home.bio": "Salarié en CDI chez **EDF Hydro depuis novembre 2013** (plus de 10 ans d'expérience industrielle), je suis actuellement en reprise d'études en formation continu promotionnelle pour obtenir mon diplôme d'ingénieur. Ce parcours allie l'expertise terrain des aménagements hydroélectriques aux compétences de pointe en ingénierie de l'énergie et transition écologique.",
+                "home.btn_career": "Explorer ma carrière & CV",
+                "home.btn_projects": "Projets d'Ingénierie",
+                "home.years": "Ans",
+                "home.stat1_desc": "Expérience CDI chez EDF Hydro",
+                "home.year_academic": "Année",
+                "home.stat2_desc": "Diplôme d'Ingénieur ENSEEIHT (N7)",
+                "home.stat3_desc": "Énergie Renouvelable & Hydroélectricité",
+
+                "home.val1_title": "Rigueur & Sécurité Industrielle",
+                "home.val1_desc": "Culture approfondie de la sûreté des ouvrages hydrauliques et de l'exploitation des centrales à haute valeur stratégique.",
+                "home.val2_title": "Transition Énergétique",
+                "home.val2_desc": "Engagement pour la flexibilité du réseau électrique et le développement durable des énergies renouvelables pilotables.",
+                "home.val3_title": "Agilité & Reprise d'Études",
+                "home.val3_desc": "Capacité d'adaptation, curiosité intellectuelle et conciliation de hauts standards académiques avec la réalité terrain.",
+
+                "career.title": "Parcours Professionnel & Formation",
+                "career.subtitle": "Chronologie de mon évolution au sein d'EDF Hydro et de l'ENSEEIHT",
+                "career.item1_date": "2023 - 2026 (En cours)",
+                "career.item1_sub": "Formation Continu Promotionnelle / Reprise d'Études",
+                "career.item1_bullet1": "Spécialisation en Génie Électrique, Hydraulique & Mécanique des Fluides.",
+                "career.item1_bullet2": "Modélisation numérique des réseaux, conversion d'énergie, automatique et systèmes intelligents.",
+                "career.item1_bullet3": "Projets transversaux d'ingénierie appliqués aux enjeux de décarbonation et de flexibilité hydroélectrique.",
+
+                "career.item2_date": "Novembre 2013 - Présent (Salarié CDI)",
+                "career.item2_sub": "Poste de Technicien d'Exploitation & Maintenance vers Ingénierie",
+                "career.item2_bullet1": "Supervision, maintenance et conduite des aménagements hydroélectriques (barrages, usines de haute et moyenne chute).",
+                "career.item2_bullet2": "Gestion des risques industriels, consignations électriques et hydrauliques, analyse de défaillance sur groupes turbogénérateurs.",
+                "career.item2_bullet3": "Participation aux projets de rénovation des automatismes et d'optimisation des rendements de turbines (Francis, Kaplan, Pelton).",
+
+                "career.preview_title": "Aperçu Synthétique du CV",
+                "career.updated": "Mis à jour 2026",
+                "career.cv_skills_title": "Compétences Techniques Clés :",
+                "career.cv_lang_title": "Langues & Certifications :",
+
+                "projects.title": "Projets d'Ingénierie & Réalisations",
+                "projects.subtitle": "Travaux académiques ENSEEIHT et projets industriels chez EDF Hydro",
+                "projects.filter_all": "Tous",
+                "projects.filter_hydro": "Hydroélectricité",
+                "projects.filter_energy": "Énergie & Réseaux",
+                "projects.filter_modeling": "Modélisation/Info",
+
+                "projects.p1_title": "Optimisation du Rendement Turbine Francis",
+                "projects.p1_desc": "Étude des phénomènes de cavitation et modélisation hydraulique pour maximiser l'efficacité énergétique lors des variations de charges réseau.",
+                "projects.p2_title": "Supervision Micro-Réseau & STEP",
+                "projects.p2_desc": "Dimensionnement et régulation d'une Station de Transfert d'Énergie par Pompage (STEP) couplée à un parc éolien local.",
+                "projects.p3_title": "Automatisme & Démarrage Noir (Black-Start)",
+                "projects.p3_desc": "Mise à jour des procédures de réalimentation du réseau électrique en cas de blackout à partir de centrales hydroélectriques autonomes.",
+
+                "mobility.title": "Mobilité Internationale & Inter-Sites",
+                "mobility.subtitle": "Immersions professionnelles, déplacements stratégiques et ouvertures à l'international",
+                "mobility.m1_title": "Interventions Inter-Sites Hydroélectriques",
+                "mobility.m1_desc": "Déplacements et immersions sur divers aménagement hydrauliques (Haute-Chute Pyrénées/Alpes, Fil de l'eau Vallée du Rhône, Massif Central) pour audits, arrêts programmés et expertises d'ingénierie.",
+                "mobility.m1_tag": "Polyvalence terrain & adaptabilité multi-sites",
+                "mobility.m2_title": "Ouverture Internationale & Réseau Européen",
+                "mobility.m2_desc": "Visites d'installations énergétiques européennes, participation aux échanges N7 internationaux et veille technologique sur le stockage par pompage en Europe (Suisse, Espagne).",
+                "mobility.m2_tag": "Pratique régulière de l'anglais technique",
+
+                "engagement.title": "Engagement Civique & RSE",
+                "engagement.subtitle": "Sensibilisation, tutorat et actions pour la transition citoyenne",
+                "engagement.e1_title": "Tutorat & Parrainage",
+                "engagement.e1_desc": "Accompagnement des jeunes alternants et techniciens chez EDF Hydro. Partage d'expérience sur la reprise d'études promotionnelle.",
+                "engagement.e2_title": "Sensibilisation Énergie & Climat",
+                "engagement.e2_desc": "Animation d'ateliers sur la biodiversité autour des retenues d'eau et sensibilisation au rôle de l'hydroélectricité dans la décarbonation.",
+                "engagement.e3_title": "Éthique & Sécurité Industrielle",
+                "engagement.e3_desc": "Ambassadeur des bonnes pratiques de sécurité et de la prévention des risques au travail sur les chantiers hydroélectriques.",
+
+                "sports.title": "Sport & Activités Extérieures",
+                "sports.subtitle": "Valeurs d'endurance, de gestion de l'effort et passerelles vers le métier d'ingénieur",
+                "sports.s1_title": "Randonnée & Haute Montagne (Pyrénées/Alpes)",
+                "sports.s1_desc": "Pratique régulière du trail et des ascensions en haute montagne. Une école d'humilité face aux éléments naturels qui résonne directement avec le respect des ouvrages hydrauliques.",
+                "sports.s1_synergy": "↳ Passerelle Ingénieur : Préparation rigoureuse, gestion des risques et prise de décision en environnement complexe.",
+                "sports.s2_title": "Sports Collectifs & Endurance",
+                "sports.s2_desc": "Pratique du vélo de route et participation aux activités sportives inter-entreprises EDF / ENSEEIHT.",
+                "sports.s2_synergy": "↳ Passerelle Ingénieur : Esprit de groupe, solidarité dans l'effort et persévérance sur le long terme."
+            },
+            EN: {
+                "nav.subtitle": "ENSEEIHT Toulouse • N7 Engineering School",
+                "nav.home": "Home",
+                "nav.career": "Career",
+                "nav.projects": "Projects",
+                "nav.mobility": "Mobility",
+                "nav.engagement": "Civic Action",
+                "nav.sports": "Sports",
+
+                "home.badge": "Continuing Education • EDF Hydro x ENSEEIHT",
+                "home.title_prefix": "3rd Year Engineering Student at",
+                "home.bio": "Permanent employee at **EDF Hydro since November 2013** (10+ years of industrial experience), I am currently pursuing an Engineering Degree through EDF's continuing promotional education program. This unique path bridges operational field expertise in hydroelectric power plants with advanced energy engineering and decarbonization.",
+                "home.btn_career": "Explore Career & Resume",
+                "home.btn_projects": "Engineering Projects",
+                "home.years": "Years",
+                "home.stat1_desc": "Permanent CDI Experience at EDF Hydro",
+                "home.year_academic": "Year",
+                "home.stat2_desc": "ENSEEIHT (N7) Engineering Master Degree",
+                "home.stat3_desc": "Renewable Energy & Hydroelectricity",
+
+                "home.val1_title": "Rigor & Industrial Safety",
+                "home.val1_desc": "Deep culture of dam safety and operations management for high-value strategic power assets.",
+                "home.val2_title": "Energy Transition",
+                "home.val2_desc": "Commitment to grid flexibility and sustainable development of dispatchable renewable energy.",
+                "home.val3_title": "Agility & Continuous Growth",
+                "home.val3_desc": "Adaptability, intellectual curiosity, and balancing high academic rigor with field reality.",
+
+                "career.title": "Professional Experience & Education",
+                "career.subtitle": "Timeline of my progression within EDF Hydro and ENSEEIHT Toulouse",
+                "career.item1_date": "2023 - 2026 (Ongoing)",
+                "career.item1_sub": "Promotional Education Program / Resume Studies",
+                "career.item1_bullet1": "Specialization in Electrical Engineering, Hydraulics & Fluid Mechanics.",
+                "career.item1_bullet2": "Numerical power grid modeling, energy conversion, automation, and smart control systems.",
+                "career.item1_bullet3": "Transversal engineering projects applied to grid flexibility and hydroelectric power.",
+
+                "career.item2_date": "November 2013 - Present (Permanent Staff)",
+                "career.item2_sub": "Operations & Maintenance Specialist towards Engineering",
+                "career.item2_bullet1": "Supervision, maintenance, and operations of hydroelectric power facilities (dams, high-head plants).",
+                "career.item2_bullet2": "Industrial risk management, electrical safety clearances, root cause failure analysis on turbine-generators.",
+                "career.item2_bullet3": "Contributed to automation retrofits and turbine efficiency optimization (Francis, Kaplan, Pelton).",
+
+                "career.preview_title": "Resume Overview",
+                "career.updated": "Updated 2026",
+                "career.cv_skills_title": "Key Technical Skills:",
+                "career.cv_lang_title": "Languages & Certifications:",
+
+                "projects.title": "Engineering Projects",
+                "projects.subtitle": "ENSEEIHT academic work and EDF Hydro industrial achievements",
+                "projects.filter_all": "All",
+                "projects.filter_hydro": "Hydroelectricity",
+                "projects.filter_energy": "Energy & Grids",
+                "projects.filter_modeling": "Modeling/CS",
+
+                "projects.p1_title": "Francis Turbine Efficiency Optimization",
+                "projects.p1_desc": "Cavitation phenomenon analysis and hydraulic modeling to maximize efficiency under grid frequency variation.",
+                "projects.p2_title": "Microgrid & Pumped Storage Supervision",
+                "projects.p2_desc": "Sizing and control loop design for a Pumped Hydro Storage (PHS) station integrated with local wind generation.",
+                "projects.p3_title": "Grid Black-Start Automation",
+                "projects.p3_desc": "Updated power grid restoration procedures from black-start capable autonomous hydroelectric power stations.",
+
+                "mobility.title": "International & Inter-Site Mobility",
+                "mobility.subtitle": "Field immersions, strategic assignments, and international energy exposure",
+                "mobility.m1_title": "Inter-Site Hydroelectric Assignments",
+                "mobility.m1_desc": "Technical assignments across various hydro plants (Pyrenees, Alps, Rhone river) for audits and outage management.",
+                "mobility.m1_tag": "High versatility and multi-site adaptability",
+                "mobility.m2_title": "International Exposure & European Network",
+                "mobility.m2_desc": "Tours of European energy facilities, international N7 academic exchanges, and technology monitoring on pumped storage in Europe.",
+                "mobility.m2_tag": "Proficient technical English",
+
+                "engagement.title": "Civic Engagement & CSR",
+                "engagement.subtitle": "Mentoring, awareness, and actions for sustainable transition",
+                "engagement.e1_title": "Mentoring & Apprenticeship Support",
+                "engagement.e1_desc": "Guiding young technicians and apprentices at EDF Hydro. Sharing feedback on promotional resume studies.",
+                "engagement.e2_title": "Climate & Energy Awareness",
+                "engagement.e2_desc": "Hosting workshops on reservoir biodiversity and promoting hydro's role in zero-carbon power grids.",
+                "engagement.e3_title": "Safety & Ethics Ambassador",
+                "engagement.e3_desc": "Promoting safety best practices and occupational hazard prevention on hydro work sites.",
+
+                "sports.title": "Sports & Outdoor Activities",
+                "sports.subtitle": "Endurance, effort management, and bridge to engineering values",
+                "sports.s1_title": "Hiking & Mountain Climbing (Pyrenees/Alps)",
+                "sports.s1_desc": "Regular trail running and high-altitude trekking. A lesson in humility facing nature's power, reflecting dam safety respect.",
+                "sports.s1_synergy": "↳ Engineering Synergy: Rigorous preparation, risk assessment, and decision making under harsh conditions.",
+                "sports.s2_title": "Team Sports & Endurance Cycling",
+                "sports.s2_desc": "Road cycling and participation in corporate EDF / ENSEEIHT sports events.",
+                "sports.s2_synergy": "↳ Engineering Synergy: Team spirit, mutual support, and long-term perseverance."
+            }
+        };
+
+        // Initialize Lucide Icons on load
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            updateLanguageUI();
+        });
+
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            currentTab = tabId;
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            // Show selected
+            const activeEl = document.getElementById(`content-${tabId}`);
+            if (activeEl) activeEl.classList.remove('hidden');
+
+            // Update Nav button styles
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-cyan-400', 'bg-slate-800/80', 'border', 'border-slate-700/50');
+                btn.classList.add('text-slate-300');
+            });
+            const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('text-cyan-400', 'bg-slate-800/80', 'border', 'border-slate-700/50');
+                activeBtn.classList.remove('text-slate-300');
+            }
+
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        // Toggle Language (FR <-> EN)
+        function toggleLanguage() {
+            currentLang = currentLang === 'FR' ? 'EN' : 'FR';
+            document.getElementById('current-lang-text').innerText = currentLang;
+            updateLanguageUI();
+            showToast(currentLang === 'FR' ? 'Langue passée en Français' : 'Language switched to English');
+        }
+
+        function updateLanguageUI() {
+            const langData = translations[currentLang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (langData[key]) {
+                    // Check if key contains markdown bolding syntax ** text **
+                    let text = langData[key];
+                    if (text.includes('**')) {
+                        text = text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-bold">$1</strong>');
+                        el.innerHTML = text;
+                    } else {
+                        el.textContent = text;
+                    }
+                }
+            });
+        }
+
+        // Mobile Menu Drawer Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Filter Projects Grid
+        function filterProjects(category) {
+            document.querySelectorAll('.project-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-cyan-500', 'text-slate-950', 'font-bold');
+                btn.classList.add('bg-slate-800', 'text-slate-300');
+            });
+
+            const activeBtn = document.querySelector(`.project-filter-btn[data-filter="${category}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-cyan-500', 'text-slate-950', 'font-bold');
+                activeBtn.classList.remove('bg-slate-800', 'text-slate-300');
+            }
+
+            document.querySelectorAll('.project-card').forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // Simulate CV Download Action
+        function downloadCV(lang) {
+            const message = lang === 'FR' ? 'Téléchargement du CV Français (PDF)...' : 'Downloading English Resume (PDF)...';
+            showToast(message);
+        }
+
+        // Copy Text to Clipboard Safely
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showToast(currentLang === 'FR' ? 'Email copié dans le presse-papier !' : 'Email copied to clipboard!');
+        }
+
+        // Display Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toast-message');
+            msgEl.textContent = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
