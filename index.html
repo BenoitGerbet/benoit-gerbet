@@ -402,7 +402,7 @@
         </section>
 
 
-        <!-- ==================== TAB 3: COMPÉTENCES & PROJETS / SKILLS & PROJECTS ==================== -->
+   <!-- ==================== TAB 3: COMPÉTENCES & PROJETS / SKILLS & PROJECTS ==================== -->
         <section id="content-skills-projects" class="tab-content hidden space-y-12">
             <!-- Header section -->
             <div class="pb-6 border-b border-slate-800">
@@ -410,16 +410,12 @@
                     <i data-lucide="award" class="w-8 h-8 text-cyan-400"></i>
                     <span data-i18n="skills.title">Compétences Clés & Projets d'Entreprise</span>
                 </h2>
-                <p class="text-slate-400 text-sm mt-1" data-i18n="skills.subtitle">Savoir-être, leadership terrain et réalisations issus de mon parcours, de mes activités et de mes centres d’intérêt.</p>
+                <p class="text-slate-400 text-sm mt-1" data-i18n="skills.subtitle">Savoir-être, leadership terrain et réalisations d'ingénierie chez EDF Hydro</p>
             </div>
 
             <!-- COMPÉTENCES SECTION PHOTO BANNER -->
             <div class="glass-card p-6 rounded-2xl border border-slate-800 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                 <div class="md:col-span-5 relative rounded-xl overflow-hidden aspect-[16/10] border border-slate-700">
-                    <!-- 
-                        PHOTO SECTION COMPÉTENCES & PROJETS :
-                        Remplacez src="competences_projets.jpg" par votre image
-                    -->
                     <img src="competences_projets.jpg" 
                          alt="Compétences et Projets EDF Hydro" 
                          class="w-full h-full object-cover"
@@ -429,7 +425,7 @@
                     <span class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-md text-xs font-semibold" data-i18n="skills.banner_tag">Double Compétence Terrain & Ingénierie</span>
                     <h3 class="text-xl font-bold text-white" data-i18n="skills.banner_title">Un Profil d'Ingénieur Ancré dans le Réel</h3>
                     <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" data-i18n="skills.banner_desc">
-                        Combiner l'exigence et les attentes du terrain chez EDF Hydro (management d'équipe, gestion de crises, astreintes) avec la rigueur scientifique dispensée à l'ENSEEIHT Toulouse.
+                        Combiner l'exigence opérationnelle du terrain chez EDF Hydro (management d'équipe, gestion de crises, astreintes) avec la rigueur scientifique dispensée à l'ENSEEIHT Toulouse.
                     </p>
                 </div>
             </div>
@@ -512,7 +508,7 @@
                 </div>
             </div>
 
-            <!-- SUBSECTION 2: PROJETS D'ENTREPRISE (USER EDITABLE SECTION) -->
+            <!-- SUBSECTION 2: PROJETS D'ENTREPRISE (AVEC UNE PHOTO PAR PROJET) -->
             <div class="space-y-6 pt-6 border-t border-slate-800">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
@@ -524,58 +520,76 @@
                     </div>
                 </div>
 
-                <!-- Editable Project Cards Container -->
+                <!-- 3 Project Cards with Individual Photos -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     
-                    <!-- Project Slot 1 -->
-                    <div class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-cyan-500/50 transition flex flex-col justify-between space-y-4">
-                        <div class="space-y-3">
-                            <div class="flex justify-between items-center">
-                                <span class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-md text-xs font-semibold">EDF Hydro</span>
-                                <i data-lucide="droplets" class="w-5 h-5 text-cyan-400"></i>
+                    <!-- Project 1 Card -->
+                    <div class="glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-cyan-500/50 transition flex flex-col justify-between">
+                        <div>
+                            <!-- PHOTO PROJET 1 -->
+                            <div class="h-48 overflow-hidden relative border-b border-slate-800">
+                                <img src="projet1.jpg" alt="Projet 1" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=80'">
                             </div>
-                            <h4 class="text-lg font-bold text-white">Projet 1 : Conduite d'Ouvrage & Crue</h4>
-                            <p class="text-slate-300 text-xs leading-relaxed">
-                                Optimisation des consignes d'exploitation et procédures de sécurité lors des épisodes de crues majeures sur l'aménagement du Pouget.
-                            </p>
+                            <div class="p-6 space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-md text-xs font-semibold" data-i18n="skills.p1_tag">EDF Hydro</span>
+                                    <i data-lucide="droplets" class="w-5 h-5 text-cyan-400"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-white" data-i18n="skills.p1_title">Projet 1 : Conduite d'Ouvrage & Crue</h4>
+                                <p class="text-slate-300 text-xs leading-relaxed" data-i18n="skills.p1_desc">
+                                    Optimisation des consignes d'exploitation et procédures de sécurité lors des épisodes de crues majeures sur l'aménagement du Pouget.
+                                </p>
+                            </div>
                         </div>
-                        <div class="pt-3 border-t border-slate-800/80 text-[10px] text-slate-400 flex flex-wrap gap-1">
+                        <div class="p-6 pt-0 border-t border-slate-800/80 text-[10px] text-slate-400 flex flex-wrap gap-1 mt-4">
                             <span class="bg-slate-800 px-2 py-0.5 rounded text-slate-300">Exploitation</span>
                             <span class="bg-slate-800 px-2 py-0.5 rounded text-slate-300">Sûreté Barrage</span>
                         </div>
                     </div>
 
-                    <!-- Project Slot 2 -->
-                    <div class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-emerald-500/50 transition flex flex-col justify-between space-y-4">
-                        <div class="space-y-3">
-                            <div class="flex justify-between items-center">
-                                <span class="px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-md text-xs font-semibold">ENSEEIHT x EDF</span>
-                                <i data-lucide="cpu" class="w-5 h-5 text-emerald-400"></i>
+                    <!-- Project 2 Card -->
+                    <div class="glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-emerald-500/50 transition flex flex-col justify-between">
+                        <div>
+                            <!-- PHOTO PROJET 2 -->
+                            <div class="h-48 overflow-hidden relative border-b border-slate-800">
+                                <img src="projet2.jpg" alt="Projet 2" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80'">
                             </div>
-                            <h4 class="text-lg font-bold text-white">Projet 2 : Rénovation Automatisme</h4>
-                            <p class="text-slate-300 text-xs leading-relaxed">
-                                Étude de modernisation des systèmes de contrôle-commande et régulation de vitesse des groupes turbogénérateurs.
-                            </p>
+                            <div class="p-6 space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-md text-xs font-semibold" data-i18n="skills.p2_tag">ENSEEIHT x EDF</span>
+                                    <i data-lucide="cpu" class="w-5 h-5 text-emerald-400"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-white" data-i18n="skills.p2_title">Projet 2 : Rénovation Automatisme</h4>
+                                <p class="text-slate-300 text-xs leading-relaxed" data-i18n="skills.p2_desc">
+                                    Étude de modernisation des systèmes de contrôle-commande et régulation de vitesse des groupes turbogénérateurs.
+                                </p>
+                            </div>
                         </div>
-                        <div class="pt-3 border-t border-slate-800/80 text-[10px] text-slate-400 flex flex-wrap gap-1">
+                        <div class="p-6 pt-0 border-t border-slate-800/80 text-[10px] text-slate-400 flex flex-wrap gap-1 mt-4">
                             <span class="bg-slate-800 px-2 py-0.5 rounded text-slate-300">Génie Électrique</span>
                             <span class="bg-slate-800 px-2 py-0.5 rounded text-slate-300">SCADA</span>
                         </div>
                     </div>
 
-                    <!-- Project Slot 3 -->
-                    <div class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-blue-500/50 transition flex flex-col justify-between space-y-4">
-                        <div class="space-y-3">
-                            <div class="flex justify-between items-center">
-                                <span class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded-md text-xs font-semibold">Projet Personnel</span>
-                                <i data-lucide="wrench" class="w-5 h-5 text-blue-400"></i>
+                    <!-- Project 3 Card -->
+                    <div class="glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition flex flex-col justify-between">
+                        <div>
+                            <!-- PHOTO PROJET 3 -->
+                            <div class="h-48 overflow-hidden relative border-b border-slate-800">
+                                <img src="projet3.jpg" alt="Projet 3" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80'">
                             </div>
-                            <h4 class="text-lg font-bold text-white">Projet 3 : [Votre Projet]</h4>
-                            <p class="text-slate-300 text-xs leading-relaxed">
-                                [Emplacement réservé pour ajouter les détails de votre projet d'entreprise ou étude technique spécifique].
-                            </p>
+                            <div class="p-6 space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="px-2.5 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded-md text-xs font-semibold" data-i18n="skills.p3_tag">Projet Personnel</span>
+                                    <i data-lucide="wrench" class="w-5 h-5 text-blue-400"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-white" data-i18n="skills.p3_title">Projet 3 : Flexibilité Hydroélectrique</h4>
+                                <p class="text-slate-300 text-xs leading-relaxed" data-i18n="skills.p3_desc">
+                                    Modélisation de l'apport des centrales hydrauliques au stockage d'énergie et à l'équilibrage du réseau électrique de demain.
+                                </p>
+                            </div>
                         </div>
-                        <div class="pt-3 border-t border-slate-800/80 text-[10px] text-slate-400 flex flex-wrap gap-1">
+                        <div class="p-6 pt-0 border-t border-slate-800/80 text-[10px] text-slate-400 flex flex-wrap gap-1 mt-4">
                             <span class="bg-slate-800 px-2 py-0.5 rounded text-slate-300">Modélisation</span>
                             <span class="bg-slate-800 px-2 py-0.5 rounded text-slate-300">Hydraulique</span>
                         </div>
@@ -584,7 +598,6 @@
                 </div>
             </div>
         </section>
-
 
         <!-- ==================== TAB 4: INTERVIEWS (IEG) / INTERVIEWS ==================== -->
         <section id="content-interviews" class="tab-content hidden space-y-8">
