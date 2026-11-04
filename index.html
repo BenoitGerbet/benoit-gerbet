@@ -1243,28 +1243,18 @@
             }
         }
 
-        function executeProtectedAction() {
-            let url = "";
-            let message = "";
+function executeProtectedAction() {
+    let url = "";
 
-            if (pendingAction === 'video') {
-                url = URL_VIDEO;
-                message = currentLang === 'FR' ? 'Ouverture de la vidéo...' : 'Opening video...';
-            } else if (pendingAction === 'cv_fr') {
-                url = URL_CV_FR;
-                message = currentLang === 'FR' ? 'Ouverture du CV Français...' : 'Opening French CV...';
-            } else if (pendingAction === 'cv_en') {
-                url = URL_CV_EN;
-                message = currentLang === 'FR' ? 'Ouverture du CV Anglais...' : 'Opening English Resume...';
-            }
+    if (pendingAction === 'video') url = URL_VIDEO;
+    else if (pendingAction === 'cv_fr') url = URL_CV_FR;
+    else if (pendingAction === 'cv_en') url = URL_CV_EN;
 
-            if (url) {
-                showToast(message);
-                // Ouverture directe dans un nouvel onglet
-                window.open(url, '_blank');
-            }
-        }
-
+    if (url) {
+        // Redirection directe dans l'onglet : 100% compatible et jamais bloquée par les navigateurs
+        window.location.href = url;
+    }
+}
         // Modale Interviews
         const interviewData = {
             1: {
