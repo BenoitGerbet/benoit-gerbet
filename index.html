@@ -902,7 +902,7 @@
         <span id="toast-message">Action effectuée</span>
     </div>
 
-    <!-- ==================== SCRIPT PRINCIPAL ==================== -->
+<!-- ==================== SCRIPT PRINCIPAL ==================== -->
     <script>
         // Initialisation des icônes Lucide
         lucide.createIcons();
@@ -917,12 +917,12 @@
         const URL_CV_EN = "fichiers/CV_EN.pdf";
         const URL_VIDEO = "https://www.youtube.com"; // Votre lien vidéo
 
-        // App State
+        // État de l'application
         let currentLang = 'FR';
         let currentTab = 'home';
         let pendingAction = null;
 
-        // Dynamic Translation Dictionary
+        // Dictionnaire de traduction
         const translations = {
             FR: {
                 "nav.subtitle": "3EA • Promotion 2029",
@@ -1021,12 +1021,12 @@
                 "sports.subtitle": "Culture du défi, endurance et équilibre personnel au service de la posture d'ingénieur",
                 "sports.photo_tag": "Dépassement de Soi & Rigueur",
                 "sports.photo_title": "Amateur de sport",
-                "sports.photo_desc": "La compétition sportive enseigne l'humilité, la régularité dans l'effort et la capacité à repousser ses limites.",
+                "sports.photo_desc": "La compétition sportive enseigne l'humilité, la régularité dans l'effort et la capacité à repousser ses limits.",
                 "sports.s1_title": "16 Ans de Pratique du Rugby en Club",
                 "sports.s1_desc": "Une aventure humaine fondatrice. Respect absolu du partenaire, goût du combat collectif et solidarité indéfectible.",
                 "sports.s1_synergy": "↳ Passerelle Ingénieur : Management bienveillant, cohésion d'équipe et solidarité sur le terrain comme en centrale.",
                 "sports.s2_title": "Cyclisme sur Route, Trail & Triathlon",
-                "sports.s2_desc": "Engagement régulier dans des épreuves d'endurance en compétition. Gestion méticuleuse de l'effort sur la durée.",
+                "sports.s2_desc": "Engagement regulier dans des épreuves d'endurance en compétition. Gestion méticuleuse de l'effort sur la durée.",
                 "sports.s2_synergy": "↳ Passerelle Ingénieur : Ténacité, gestion des ressources et rigueur d'exécution lors de la reprise d'études.",
 
                 "modal.title": "Accès Sécurisé",
@@ -1150,13 +1150,13 @@
             }
         };
 
-        // DOM Initialization
+        // Initialisation DOM
         window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             updateLanguageUI();
         });
 
-        // Tab Navigation Switcher
+        // Navigation Onglets
         function switchTab(tabId) {
             currentTab = tabId;
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
@@ -1181,7 +1181,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Language Switcher
+        // Changement de Langue
         function toggleLanguage() {
             currentLang = currentLang === 'FR' ? 'EN' : 'FR';
             const langText = document.getElementById('current-lang-text');
@@ -1207,7 +1207,7 @@
             });
         }
 
-        // PIN Security Modal Handlers
+        // Gestion de la Modale PIN
         function openPinModal(actionType) {
             pendingAction = actionType;
             const pinInput = document.getElementById('pin-input');
@@ -1252,34 +1252,20 @@
                 message = currentLang === 'FR' ? 'Ouverture de la vidéo...' : 'Opening video...';
             } else if (pendingAction === 'cv_fr') {
                 url = URL_CV_FR;
-                message = currentLang === 'FR' ? 'Téléchargement du CV Français...' : 'Downloading French CV...';
+                message = currentLang === 'FR' ? 'Ouverture du CV Français...' : 'Opening French CV...';
             } else if (pendingAction === 'cv_en') {
                 url = URL_CV_EN;
-                message = currentLang === 'FR' ? 'Téléchargement du CV Anglais...' : 'Downloading English Resume...';
+                message = currentLang === 'FR' ? 'Ouverture du CV Anglais...' : 'Opening English Resume...';
             }
 
             if (url) {
                 showToast(message);
-
-                // Encodage sécurisé des caractères spéciaux et des espaces dans le nom de fichier
-                const encodedUrl = encodeURI(url);
-                
-                if (pendingAction === 'video') {
-                    window.open(encodedUrl, '_blank');
-                } else {
-                    // Création d'un élément d'ancrage temporaire pour le téléchargement
-                    const link = document.createElement('a');
-                    link.href = encodedUrl;
-                    link.target = '_blank';
-                    link.setAttribute('download', '');
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                }
+                // Ouverture directe dans un nouvel onglet
+                window.open(url, '_blank');
             }
         }
 
-        // Interview Modal Handler
+        // Modale Interviews
         const interviewData = {
             1: {
                 tag: "Exploitation Hydroélectrique",
@@ -1327,13 +1313,13 @@
             document.getElementById('interview-modal').classList.add('hidden');
         }
 
-        // Mobile Menu Toggle
+        // Menu Mobile
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             if (mobileMenu) mobileMenu.classList.toggle('hidden');
         }
 
-        // Clipboard Copy Helper
+        // Copie Presse-papier
         function copyToClipboard(text) {
             const textarea = document.createElement('textarea');
             textarea.value = text;
@@ -1344,7 +1330,7 @@
             showToast(currentLang === 'FR' ? 'Email copié dans le presse-papier !' : 'Email copied to clipboard!');
         }
 
-        // Toast Helper
+        // Notification Toast
         function showToast(message) {
             const toast = document.getElementById('toast');
             const toastMsg = document.getElementById('toast-message');
