@@ -1229,15 +1229,35 @@
         }
 
         function verifyPin() {
-            const inputVal = document.getElementById('pin-input').value;
-            if (inputVal === ACCESS_PIN) {
-                document.getElementById('pin-error').classList.add('hidden');
-                closePinModal();
-                executeProtectedAction();
-            } else {
-                document.getElementById('pin-error').classList.remove('hidden');
+    const input = document.getElementById('pinInput').value;
+    const error = document.getElementById('pinError');
+    
+    if (input === ACCESS_PIN) {
+        closePinModal();
+        let url = "";
+        if (currentAction === 'cv_fr') url = URL_CV_FR;
+        else if (currentAction === 'cv_en') url = URL_CV_EN;
+        else if (currentAction === 'video') url = URL_VIDEO;
+
+        if (url) {
+            // Création d'un lien temporaire pour contourner le blocage du navigateur
+            const link = document.createElement('a');
+            link.href = url;
+            link.target = '_blank';
+            
+            // Pour la vidéo, on ouvre l'onglet, pour le CV on force le téléchargement
+            if (currentAction !== 'video') {
+                link.setAttribute('download', '');
             }
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
+    } else {
+        error.classList.remove('hidden');
+    }
+}
 
         function executeProtectedAction() {
             if (pendingAction === 'video') {
