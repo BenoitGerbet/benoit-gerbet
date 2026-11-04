@@ -926,18 +926,117 @@
         <span id="toast-message">Action effectuée</span>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        // =========================================================================
-        // CONFIGURATION DES PARAMÈTRES & PROTECTIONS
-        // =========================================================================
-        const ACCESS_PIN = "1993"; // CODE PIN DE PROTECTION
-        
-        // MODIFIEZ CES URLS PAR VOS VRAIS FICHIERS DÉPOSÉS SUR GITHUB
-        const URL_CV_FR ="fichiers/CV Français Gerbet.pdf";
-        const URL_CV_EN ="fichiers/CV Anglais Gerbet.pdf";
-        const URL_VIDEO = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; // Lien vidéo de présentation
+   <script>
+    // Initialisation des icônes Lucide
+    lucide.createIcons();
 
+    // ==========================================
+    // CONFIGURATION DES LIENS ET CODE PIN
+    // ==========================================
+    const ACCESS_PIN = "1234"; // Votre code PIN
+    
+    // Remplacez les chemins ci-dessous par VOS VRAIS FICHIERS dans le dossier 'fichiers'
+    const URL_CV_FR = "fichiers/CV Français Gerbet.pdf";
+    const URL_CV_EN = "fichiers/CV Anglais Gerbet.pdf";
+    const URL_VIDEO = "https://www.youtube.com"; // Votre lien vidéo (commençant par https://)
+
+    let currentAction = '';
+
+    // Gestion de la navigation par onglets
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('bg-cyan-700', 'text-white');
+            btn.classList.add('text-slate-300', 'hover:bg-slate-800');
+        });
+
+        const selectedTab = document.getElementById(tabId);
+        if (selectedTab) selectedTab.classList.remove('hidden');
+
+        const activeBtn = document.getElementById('btn-' + tabId);
+        if (activeBtn) {
+            activeBtn.classList.remove('text-slate-300', 'hover:bg-slate-800');
+            activeBtn.classList.add('bg-cyan-700', 'text-white');
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Gestion de la langue (FR/EN)
+    function setLanguage(lang) {
+        document.querySelectorAll('[data-fr]').forEach(elem => {
+            const text = elem.getAttribute(`data-${lang}`);
+            if (text) elem.textContent = text;
+        });
+
+        const btnFr = document.getElementById('lang-fr');
+        const btnEn = document.getElementById('lang-en');
+        if (lang === 'fr') {
+            btnFr.classList.add('bg-cyan-700', 'text-white');
+            btnFr.classList.remove('bg-slate-800', 'text-slate-300');
+            btnEn.classList.add('bg-slate-800', 'text-slate-300');
+            btnEn.classList.remove('bg-cyan-700', 'text-white');
+        } else {
+            btnEn.classList.add('bg-cyan-700', 'text-white');
+            btnEn.classList.remove('bg-slate-800', 'text-slate-300');
+            btnFr.classList.add('bg-slate-800', 'text-slate-300');
+            btnFr.classList.remove('bg-cyan-700', 'text-white');
+        }
+    }
+
+    // Gestion de la modale PIN
+    function openPinModal(action) {
+        currentAction = action;
+        const input = document.getElementById('pinInput');
+        const error = document.getElementById('pinError');
+        const modal = document.getElementById('pinModal');
+
+        if (input) input.value = '';
+        if (error) error.classList.add('hidden');
+        if (modal) modal.classList.remove('hidden');
+    }
+
+    function closePinModal() {
+        const modal = document.getElementById('pinModal');
+        if (modal) modal.classList.add('hidden');
+    }
+
+    // Vérification du code PIN et redirection directe
+    function verifyPin(e) {
+        if (e && e.preventDefault) e.preventDefault(); // Empêche le rechargement de la page
+
+        const input = document.getElementById('pinInput').value.trim();
+        const error = document.getElementById('pinError');
+
+        if (input === ACCESS_PIN) {
+            closePinModal();
+            let targetUrl = "";
+
+            if (currentAction === 'cv_fr') targetUrl = URL_CV_FR;
+            else if (currentAction === 'cv_en') targetUrl = URL_CV_EN;
+            else if (currentAction === 'video') targetUrl = URL_VIDEO;
+
+            if (targetUrl) {
+                // Redirection directe vers le fichier / lien
+                window.location.href = targetUrl;
+            }
+        } else {
+            if (error) error.classList.remove('hidden');
+        }
+    }
+
+    // Permet de valider avec la touche "Entrée" dans le champ du code PIN
+    document.addEventListener('DOMContentLoaded', () => {
+        const pinInput = document.getElementById('pinInput');
+        if (pinInput) {
+            pinInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    verifyPin(e);
+                }
+            });
+        }
+    });
+</script>
         // App State
         let currentLang = 'FR';
         let currentTab = 'home';
