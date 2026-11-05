@@ -578,8 +578,8 @@
                             </div>
                         </div>
                         <div class="p-6 pt-0 border-t border-slate-800/80 text-[10px] text-slate-400 flex flex-wrap gap-1 mt-4">
-                            <span class="bg-slate-800 px-2 py-0.5 rounded text-slate-300">Modélisation</span>
-                            <span class="bg-slate-800 px-2 py-0.5 rounded text-slate-300">Hydraulique</span>
+                            <span class="bg-slate-800 px-2 py-0.5 rounded text-slate-300">Rigueur</span>
+                            <span class="bg-slate-800 px-2 py-0.5 rounded text-slate-300">Gestion du stress</span>
                         </div>
                     </div>
 
@@ -903,19 +903,19 @@
     </div>
 
 <!-- ==================== SCRIPT PRINCIPAL ==================== -->
-    <script>
+   <script>
         // Initialisation des icônes Lucide
         lucide.createIcons();
 
         // ==========================================
         // CONFIGURATION DES LIENS ET CODE PIN
         // ==========================================
-        const ACCESS_PIN = "1234"; // Code PIN d'accès (défaut: 1234)
+        const ACCESS_PIN = "1234"; // Code PIN d'accès
         
-        // Emplacement des fichiers dans le dossier 'fichiers'
+        // Mettez l'URL exacte qui a fonctionné lors de votre test direct
         const URL_CV_FR = "fichiers/CV_FR.pdf";
         const URL_CV_EN = "fichiers/CV_EN.pdf";
-        const URL_VIDEO = "https://www.youtube.com"; // Votre lien vidéo
+        const URL_VIDEO = "https://www.youtube.com";
 
         // État de l'application
         let currentLang = 'FR';
@@ -1021,12 +1021,12 @@
                 "sports.subtitle": "Culture du défi, endurance et équilibre personnel au service de la posture d'ingénieur",
                 "sports.photo_tag": "Dépassement de Soi & Rigueur",
                 "sports.photo_title": "Amateur de sport",
-                "sports.photo_desc": "La compétition sportive enseigne l'humilité, la régularité dans l'effort et la capacité à repousser ses limits.",
+                "sports.photo_desc": "La compétition sportive enseigne l'humilité, la régularité dans l'effort et la capacité à repousser ses limites.",
                 "sports.s1_title": "16 Ans de Pratique du Rugby en Club",
                 "sports.s1_desc": "Une aventure humaine fondatrice. Respect absolu du partenaire, goût du combat collectif et solidarité indéfectible.",
                 "sports.s1_synergy": "↳ Passerelle Ingénieur : Management bienveillant, cohésion d'équipe et solidarité sur le terrain comme en centrale.",
                 "sports.s2_title": "Cyclisme sur Route, Trail & Triathlon",
-                "sports.s2_desc": "Engagement regulier dans des épreuves d'endurance en compétition. Gestion méticuleuse de l'effort sur la durée.",
+                "sports.s2_desc": "Engagement régulier dans des épreuves d'endurance en compétition. Gestion méticuleuse de l'effort sur la durée.",
                 "sports.s2_synergy": "↳ Passerelle Ingénieur : Ténacité, gestion des ressources et rigueur d'exécution lors de la reprise d'études.",
 
                 "modal.title": "Accès Sécurisé",
@@ -1150,13 +1150,13 @@
             }
         };
 
-        // Initialisation DOM
+        // DOM Initialization
         window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             updateLanguageUI();
         });
 
-        // Navigation Onglets
+        // Tab Navigation Switcher
         function switchTab(tabId) {
             currentTab = tabId;
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
@@ -1181,7 +1181,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Changement de Langue
+        // Language Switcher
         function toggleLanguage() {
             currentLang = currentLang === 'FR' ? 'EN' : 'FR';
             const langText = document.getElementById('current-lang-text');
@@ -1207,7 +1207,7 @@
             });
         }
 
-        // Gestion de la Modale PIN
+        // Modale PIN
         function openPinModal(actionType) {
             pendingAction = actionType;
             const pinInput = document.getElementById('pin-input');
@@ -1243,18 +1243,19 @@
             }
         }
 
-function executeProtectedAction() {
-    let url = "";
+        function executeProtectedAction() {
+            let targetUrl = "";
 
-    if (pendingAction === 'video') url = URL_VIDEO;
-    else if (pendingAction === 'cv_fr') url = URL_CV_FR;
-    else if (pendingAction === 'cv_en') url = URL_CV_EN;
+            if (pendingAction === 'cv_fr') targetUrl = URL_CV_FR;
+            else if (pendingAction === 'cv_en') targetUrl = URL_CV_EN;
+            else if (pendingAction === 'video') targetUrl = URL_VIDEO;
 
-    if (url) {
-        // Redirection directe dans l'onglet : 100% compatible et jamais bloquée par les navigateurs
-        window.location.href = url;
-    }
-}
+            if (targetUrl) {
+                // Redirection directe vers le fichier / vidéo (ne peut pas être bloquée)
+                window.location.href = targetUrl;
+            }
+        }
+
         // Modale Interviews
         const interviewData = {
             1: {
@@ -1320,7 +1321,7 @@ function executeProtectedAction() {
             showToast(currentLang === 'FR' ? 'Email copié dans le presse-papier !' : 'Email copied to clipboard!');
         }
 
-        // Notification Toast
+        // Toast Notification
         function showToast(message) {
             const toast = document.getElementById('toast');
             const toastMsg = document.getElementById('toast-message');
