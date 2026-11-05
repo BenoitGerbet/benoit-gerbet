@@ -903,19 +903,19 @@
     </div>
 
 <!-- ==================== SCRIPT PRINCIPAL ==================== -->
-   <script>
+    <script>
         // Initialisation des icônes Lucide
         lucide.createIcons();
 
         // ==========================================
         // CONFIGURATION DES LIENS ET CODE PIN
         // ==========================================
-        const ACCESS_PIN = "1234"; // Code PIN d'accès
+        const ACCESS_PIN = "1234"; // Code PIN d'accès (défaut: 1234)
         
-        // Mettez l'URL exacte qui a fonctionné lors de votre test direct
+        // Emplacement des fichiers dans le dossier 'fichiers'
         const URL_CV_FR = "fichiers/CV_FR.pdf";
         const URL_CV_EN = "fichiers/CV_EN.pdf";
-        const URL_VIDEO = "https://www.youtube.com";
+        const URL_VIDEO = "https://www.youtube.com"; // Votre lien vidéo
 
         // État de l'application
         let currentLang = 'FR';
@@ -1136,7 +1136,6 @@
                 "sports.photo_desc": "Competitive sports teach humility, effort consistency, and pushing personal limits.",
                 "sports.s1_title": "16 Years of Competitive Club Rugby",
                 "sports.s1_desc": "A foundational human experience. Absolute respect for teammates, collective fighting spirit, and teamwork.",
-                "sports.s1_synergy": "↳ Engineering Synergy: Benevolent management, team cohesion, and solidarity on the field and at power plants.",
                 "sports.s2_title": "Road Cycling, Trail Running & Triathlon",
                 "sports.s2_desc": "Regular participation in endurance competitions. Meticulous effort management over long distances.",
                 "sports.s2_synergy": "↳ Engineering Synergy: Tenacity, resource management, and execution rigor during resume studies.",
@@ -1150,13 +1149,13 @@
             }
         };
 
-        // DOM Initialization
+        // Initialisation DOM
         window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             updateLanguageUI();
         });
 
-        // Tab Navigation Switcher
+        // Navigation Onglets
         function switchTab(tabId) {
             currentTab = tabId;
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
@@ -1181,7 +1180,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Language Switcher
+        // Changement de Langue
         function toggleLanguage() {
             currentLang = currentLang === 'FR' ? 'EN' : 'FR';
             const langText = document.getElementById('current-lang-text');
@@ -1207,7 +1206,7 @@
             });
         }
 
-        // Modale PIN
+        // Gestion Modale PIN
         function openPinModal(actionType) {
             pendingAction = actionType;
             const pinInput = document.getElementById('pin-input');
@@ -1251,7 +1250,7 @@
             else if (pendingAction === 'video') targetUrl = URL_VIDEO;
 
             if (targetUrl) {
-                // Redirection directe vers le fichier / vidéo (ne peut pas être bloquée)
+                // Redirection directe vers le fichier PDF (déverrouille la navigation 100% du temps)
                 window.location.href = targetUrl;
             }
         }
