@@ -118,7 +118,7 @@
             <button onclick="switchTab('home')" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-2"><i data-lucide="home" class="w-4 h-4 text-cyan-400"></i> <span data-i18n="nav.home">Accueil</span></button>
             <button onclick="switchTab('career')" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-2"><i data-lucide="briefcase" class="w-4 h-4 text-cyan-400"></i> <span data-i18n="nav.career">Carrière</span></button>
             <button onclick="switchTab('skills-projects')" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-cyan-400"></i> <span data-i18n="nav.skills_projects">Compétences & Projets</span></button>
-            <button onclick="switchTab('interviews')" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-cyan-400"></i> <span data-i18n="nav.interviews">Interviews IEG</span></button>
+            <button onclick="switchTab('interviews')" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-cyan-400"></i> <span data-i18n="nav.interviews">Mobilité & Interviews</span></button>
             <button onclick="switchTab('engagement')" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-2"><i data-lucide="heart" class="w-4 h-4 text-cyan-400"></i> <span data-i18n="nav.engagement">Engagement Civique</span></button>
             <button onclick="switchTab('sports')" class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-200 hover:bg-slate-800 flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 text-cyan-400"></i> <span data-i18n="nav.sports">Sport & Activités</span></button>
         </div>
@@ -313,7 +313,7 @@
                                 <li data-i18n="career.item3_bullet1">Animation et gestion directe d'une équipe opérationnelle de 13 personnes.</li>
                                 <li data-i18n="career.item3_bullet2">Relais Planification des activités pour le lot Pouget/Truel.</li>
                                 <li data-i18n="career.item3_bullet3">Intégration dans l'équipe d'encadrement sur divers sujets.</li>
-				<li data-i18n="career.item3_bullet4">Transfert de compétences et rôle de Grand Formateur Crue pour les barrages.</li>
+                                <li data-i18n="career.item3_bullet4">Transfert de compétences et rôle de Grand Formateur Crue pour les barrages.</li>
                             </ul>
                         </div>
                     </div>
@@ -332,8 +332,8 @@
                                 <li data-i18n="career.item4_bullet1">Astreinte, chargé de consignation, de travaux et de conduite en crue.</li>
                                 <li data-i18n="career.item4_bullet2">Relais Performance/Production et participation active au réseau Exploitant de l'Unité.</li>
                                 <li data-i18n="career.item4_bullet3">Gestion d'équipe en temps réel (planification et réajustement hebdomadaire).</li>
-				<li data-i18n="career.item4_bullet4">Préparation, suivi et évolution du plan de maintenance du lot Pouget-Truel.</li>
-				<li data-i18n="career.item4_bullet5">Tutorat d'étudiants en BTS Électrotechnique et accompagnement des embauchés.</li>
+                                <li data-i18n="career.item4_bullet4">Préparation, suivi et évolution du plan de maintenance du lot Pouget-Truel.</li>
+                                <li data-i18n="career.item4_bullet5">Tutorat d'étudiants en BTS Électrotechnique et accompagnement des embauchés.</li>
                             </ul>
                         </div>
                     </div>
@@ -371,7 +371,7 @@
                         </div>
                     </div>
 
-	            <!-- Item 7: IUT -->
+                    <!-- Item 7: IUT -->
                     <div class="relative group">
                         <div class="absolute -left-[31px] top-0 w-6 h-6 rounded-full bg-cyan-500 border-4 border-slate-950 flex items-center justify-center text-slate-950 shadow-lg shadow-cyan-500/50"></div>
                         <div class="glass-card p-5 sm:p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition">
@@ -589,119 +589,200 @@
             </div>
         </section>
 
-        <!-- ==================== TAB 4: MOBILITE / INTERVIEWS ==================== -->
-		        <section id="content-interviews" class="tab-content hidden space-y-8">
-            <div class="pb-6 border-b border-slate-800">
-                <h2 class="text-3xl font-extrabold text-white flex items-center gap-3">
-                    <i data-lucide="users" class="w-8 h-8 text-cyan-400"></i>
-                    <span data-i18n="interviews.title">Interviews de Professionnels des IEG</span>
-                </h2>
-                <p class="text-slate-400 text-sm mt-1" data-i18n="interviews.subtitle">Regards croisés sur les Industries Électriques et Gazières & métiers d'ingénieur</p>
-            </div>
+        <!-- ==================== TAB 4: MOBILITÉ & INTERVIEWS ==================== -->
+        <section id="content-interviews" class="tab-content hidden space-y-12">
 
-            <!-- INTERVIEWS SECTION PHOTO BANNER -->
-            <div class="glass-card p-6 rounded-2xl border border-slate-800 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                <div class="md:col-span-5 relative rounded-xl overflow-hidden aspect-[16/10] border border-slate-700">
-                    <img src="interviews.jpg" 
-                         alt="Interviews Professionnels IEG" 
-                         class="w-full h-full object-cover"
-                         onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80'">
+	<!-- ========== SOUS-SECTION A : MOBILITÉ (FRISE CHRONOLOGIQUE EN POINTS) ========== -->
+            <div class="space-y-8">
+                <div class="pb-6 border-b border-slate-800">
+                    <h2 class="text-3xl font-extrabold text-white flex items-center gap-3">
+                        <i data-lucide="compass" class="w-8 h-8 text-emerald-400"></i>
+                        <span data-i18n="mobility.title">Mobilité Internationale Étudiante & Professionnelle</span>
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1" data-i18n="mobility.subtitle">Je ne souhaite pas réaliser de mobilité internationale dans le cadre de mon diplôme d'ingénieur. En revanche, j'ai déjà une vision de mon projet professionnel à court, moyen et long terme</p>
                 </div>
-                <div class="md:col-span-7 space-y-3">
-                    <span class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-md text-xs font-semibold" data-i18n="interviews.banner_tag">Réseau & Échanges Métiers</span>
-                    <h3 class="text-xl font-bold text-white" data-i18n="interviews.banner_title">Enquêtes Métiers & Vision Industrielle</h3>
-                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" data-i18n="interviews.banner_desc">
-                 Série d'entretiens menés sur le site MyJobGlasses auprès de cadres et d'experts de la branche des IEG (Industries Électriques et Gazières) pour éclairer les évolutions technologiques et managériales afin d’en comprendre les enjeux et d’établir des liens avec le secteur de l’hydraulique.
-                    </p>
-                </div>
-            </div>
-					
-        <section id="content-interviews" class="tab-content hidden space-y-8">
-            <div class="pb-6 border-b border-slate-800">
-                <h2 class="text-3xl font-extrabold text-white flex items-center gap-3">
-                    <i data-lucide="users" class="w-8 h-8 text-cyan-400"></i>
-                    <span data-i18n="interviews.title">Interviews de Professionnels des IEG</span>
-                </h2>
-                <p class="text-slate-400 text-sm mt-1" data-i18n="interviews.subtitle">Regards croisés sur les Industries Électriques et Gazières & métiers d'ingénieur</p>
-            </div>
 
-            <!-- INTERVIEWS SECTION PHOTO BANNER -->
-            <div class="glass-card p-6 rounded-2xl border border-slate-800 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                <div class="md:col-span-5 relative rounded-xl overflow-hidden aspect-[16/10] border border-slate-700">
-                    <img src="interviews.jpg" 
-                         alt="Interviews Professionnels IEG" 
-                         class="w-full h-full object-cover"
-                         onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80'">
-                </div>
-                <div class="md:col-span-7 space-y-3">
-                    <span class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-md text-xs font-semibold" data-i18n="interviews.banner_tag">Réseau & Échanges Métiers</span>
-                    <h3 class="text-xl font-bold text-white" data-i18n="interviews.banner_title">Enquêtes Métiers & Vision Industrielle</h3>
-                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" data-i18n="interviews.banner_desc">
-                 Série d'entretiens menés sur le site MyJobGlasses auprès de cadres et d'experts de la branche des IEG (Industries Électriques et Gazières) pour éclairer les évolutions technologiques et managériales afin d’en comprendre les enjeux et d’établir des liens avec le secteur de l’hydraulique.
-                    </p>
-                </div>
-            </div>
+                <!-- Frise Chronologique en Points -->
+                <div class="relative">
+                    <!-- Ligne horizontale sur écran large (Desktop) alignée sur le centre des points -->
+                    <div class="hidden md:block absolute top-[63px] left-6 right-6 h-0.5 bg-gradient-to-r from-cyan-500 via-emerald-500 to-blue-500 opacity-50"></div>
+                    <!-- Ligne verticale sur mobile -->
+                    <div class="md:hidden absolute top-4 bottom-4 left-[15px] w-0.5 bg-gradient-to-b from-cyan-500 via-emerald-500 to-blue-500 opacity-50"></div>
 
-            <!-- 3 Interviews Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                
-                <!-- Interview 1 -->
-                <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded-md text-xs font-semibold" data-i18n="interviews.i1_tag">Exploitation Hydro</span>
-                            <i data-lucide="message-square" class="w-5 h-5 text-cyan-400"></i>
+                    <!-- Grille des points de la frise -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                        <!-- Point 1 -->
+                        <div class="relative pl-10 md:pl-0 flex flex-col">
+                            <!-- Bulle date au-dessus du trait (Desktop) -->
+                            <span class="hidden md:inline-flex items-center self-start h-7 px-3 mb-3 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-full text-xs font-semibold" data-i18n="mobility.m1_date">Aujourd'hui – Septembre 2029</span>
+
+                            <!-- Point lumineux -->
+                            <div class="absolute left-0 top-1.5 md:static md:mb-4 flex items-center">
+                                <div class="w-8 h-8 md:w-12 md:h-12 rounded-full bg-slate-950 border-2 border-cyan-500 flex items-center justify-center shadow-lg shadow-cyan-500/30 z-10">
+                                    <span class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-cyan-400 animate-pulse"></span>
+                                </div>
+                            </div>
+
+                            <!-- Carte associée au point 1 -->
+                            <div class="glass-card p-5 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition flex-grow space-y-2.5">
+                                <span class="md:hidden inline-block px-2.5 py-0.5 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-full text-[11px] font-semibold" data-i18n="mobility.m1_date">Aujourd'hui – Septembre 2029</span>
+                                <div class="flex items-center gap-1.5 text-xs text-slate-400">
+                                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-cyan-400"></i>
+                                    <span data-i18n="mobility.m1_loc">Argelès-Gazost (65) & Toulouse (31)</span>
+                                </div>
+                                <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="mobility.m1_title">Préparation de diplôme & Évolution Interne</h3>
+                                <p class="text-slate-300 text-xs leading-relaxed" data-i18n="mobility.m1_desc">
+                                    Intégration du dispositif CAP'CADRE : intégration au sein du GEH Adour & Gaves en parallèle de la reprise d'études d'ingénieur à l'ENSEEIHT Toulouse.
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="text-lg font-bold text-white" data-i18n="interviews.i1_title">Interview 1 : Chef d'Exploitation Hydro</h3>
-                        <p class="text-xs text-slate-400 font-medium" data-i18n="interviews.i1_sub">Responsable de Groupement d'Usines • EDF Hydro</p>
-                        <p class="text-slate-300 text-xs leading-relaxed" data-i18n="interviews.i1_desc">
-                            Échange centré sur le management de crise, la conduite des barrages en temps réel et l'évolution des compétences attendues des futurs ingénieurs de terrain.
+
+                        <!-- Point 2 -->
+                        <div class="relative pl-10 md:pl-0 flex flex-col">
+                            <!-- Bulle date au-dessus du trait (Desktop) -->
+                            <span class="hidden md:inline-flex items-center self-start h-7 px-3 mb-3 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full text-xs font-semibold" data-i18n="mobility.m2_date">Horizon 2029</span>
+                       
+
+                            <!-- Point lumineux -->
+                            <div class="absolute left-0 top-1.5 md:static md:mb-4 flex items-center">
+                                <div class="w-8 h-8 md:w-12 md:h-12 rounded-full bg-slate-950 border-2 border-emerald-500 flex items-center justify-center shadow-lg shadow-emerald-500/30 z-10">
+                                    <span class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-emerald-400"></span>
+                                </div>
+                            </div>
+
+                            <!-- Carte associée au point 2 -->
+                            <div class="glass-card p-5 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition flex-grow space-y-2.5">
+                                <span class="md:hidden inline-block px-2.5 py-0.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full text-[11px] font-semibold" data-i18n="mobility.m2_date">Horizon 2029</span>
+                                <div class="flex items-center gap-1.5 text-xs text-slate-400">
+                                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                    <span data-i18n="mobility.m2_loc">Argelès-Gazost (65)</span>
+                                </div>
+                                <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="mobility.m2_title">Évolution des Responsabilités</h3>
+                                <p class="text-slate-300 text-xs leading-relaxed" data-i18n="mobility.m2_desc">
+                                    Prise de poste d'ingénieur Coordinateur cadre au sein d'EDF Hydro pour évoluer ensuite sur des postes de Chef de Groupement en exploitation hydraulique.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Point 3 -->
+                        <div class="relative pl-10 md:pl-0 flex flex-col">
+                            <!-- Bulle date au-dessus du trait (Desktop) -->
+                            <span class="hidden md:inline-flex items-center self-start h-7 px-3 mb-3 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded-full text-xs font-semibold" data-i18n="mobility.m3_date">Horizon 2039</span>
+
+                            <!-- Point lumineux -->
+                            <div class="absolute left-0 top-1.5 md:static md:mb-4 flex items-center">
+                                <div class="w-8 h-8 md:w-12 md:h-12 rounded-full bg-slate-950 border-2 border-blue-500 flex items-center justify-center shadow-lg shadow-blue-500/30 z-10">
+                                    <span class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-blue-400"></span>
+                                </div>
+                            </div>
+
+                            <!-- Carte associée au point 3 -->
+                            <div class="glass-card p-5 rounded-2xl border border-slate-800 hover:border-blue-500/50 transition flex-grow space-y-2.5">
+                                <span class="md:hidden inline-block px-2.5 py-0.5 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded-full text-[11px] font-semibold" data-i18n="mobility.m3_date">Horizon 2039</span>
+                                <div class="flex items-center gap-1.5 text-xs text-slate-400">
+                                    <i data-lucide="building-2" class="w-3.5 h-3.5 text-blue-400"></i>
+                                    <span data-i18n="mobility.m3_loc">Centres d'Ingénierie & État-Major EDF</span>
+                                </div>
+                                <h3 class="text-base sm:text-lg font-bold text-white" data-i18n="mobility.m3_title">Projets Internationaux & Orientations stratégiques</h3>
+                                <p class="text-slate-300 text-xs leading-relaxed" data-i18n="mobility.m3_desc">
+                                    Ouverture sur des postes en centre d'ingénierie ou en tant que chef de pôle ou au sein d'un état-major d'EDF.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== SOUS-SECTION B : INTERVIEWS DE PROFESSIONNELS ========== -->
+            <div class="space-y-8 pt-10 border-t border-slate-800">
+                <div class="pb-6 border-b border-slate-800">
+                    <h2 class="text-3xl font-extrabold text-white flex items-center gap-3">
+                        <i data-lucide="users" class="w-8 h-8 text-cyan-400"></i>
+                        <span data-i18n="interviews.title">Interviews de Professionnels</span>
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1" data-i18n="interviews.subtitle">Regards croisés sur mon projet professionnel</p>
+                </div>
+
+                <!-- INTERVIEWS SECTION PHOTO BANNER -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                    <div class="md:col-span-5 relative rounded-xl overflow-hidden aspect-[16/10] border border-slate-700">
+                        <img src="interviews.jpg" 
+                             alt="Interviews Professionnels EDF Hydro" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80'">
+                    </div>
+                    <div class="md:col-span-7 space-y-3">
+                        <span class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-md text-xs font-semibold" data-i18n="interviews.banner_tag">Réseau & Échanges Métiers</span>
+                        <h3 class="text-xl font-bold text-white" data-i18n="interviews.banner_title">Enquêtes Métiers & Vision Professionnelle</h3>
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" data-i18n="interviews.banner_desc">
+                            Je n'ai pas eu l'opportunité de réaliser des entretiens via la plateforme MyJobGlasses. Toutefois, mon parcours professionnel et mon projet de reprise d'études m'ont permis d'échanger directement avec plusieurs cadres et experts de la branche EDF Hydro. Ces échanges ont été particulièrement enrichissants pour mieux comprendre les missions, les responsabilités et l'impact d'un poste d'ingénieur au sein du groupe. Ils m'ont également apporté une vision concrète des perspectives d'évolution et des enjeux techniques associés à ces fonctions. Les retours d'expérience recueillis ont conforté ma décision de reprendre des études d'ingénieur et ont renforcé ma motivation à poursuivre mon projet professionnel au sein d'EDF.
                         </p>
                     </div>
-                    <button onclick="openInterviewModal(1)" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition">
-                        <i data-lucide="file-text" class="w-4 h-4 text-cyan-400"></i>
-                        <span data-i18n="interviews.btn_read">Consulter la synthèse</span>
-                    </button>
                 </div>
 
-                <!-- Interview 2 -->
-                <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded-md text-xs font-semibold" data-i18n="interviews.i2_tag">Sûreté Hydraulique</span>
-                            <i data-lucide="message-square" class="w-5 h-5 text-emerald-400"></i>
+                <!-- 3 Interviews Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Interview 1 -->
+                    <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition flex flex-col justify-between space-y-4">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded-md text-xs font-semibold" data-i18n="interviews.i1_tag">Exploitation Hydro</span>
+                                <i data-lucide="message-square" class="w-5 h-5 text-cyan-400"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white" data-i18n="interviews.i1_title">Interview 1 : Chef d'Exploitation Hydro</h3>
+                            <p class="text-xs text-slate-400 font-medium" data-i18n="interviews.i1_sub">Responsable de Groupement d'Usines - EDF Hydro</p>
+                            <p class="text-slate-300 text-xs leading-relaxed" data-i18n="interviews.i1_desc">
+                                Échange centré sur le management de crise, la conduite des barrages en temps réel et l'évolution des compétences attendues des futurs ingénieurs.
+                            </p>
                         </div>
-                        <h3 class="text-lg font-bold text-white" data-i18n="interviews.i2_title">Interview 2 : Expert Sûreté & Ouvrages</h3>
-                        <p class="text-xs text-slate-400 font-medium" data-i18n="interviews.i2_sub">Ingénieur Expert Sûreté Hydraulique</p>
-                        <p class="text-slate-300 text-xs leading-relaxed" data-i18n="interviews.i2_desc">
-                            Discussion autour de la réglementation des grands barrages, des études de danger et de l'intégration des aléas climatiques extrêmes dans le calcul des structures.
-                        </p>
+                        <button onclick="openInterviewModal(1)" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition">
+                            <i data-lucide="file-text" class="w-4 h-4 text-cyan-400"></i>
+                            <span data-i18n="interviews.btn_read">Consulter la synthèse</span>
+                        </button>
                     </div>
-                    <button onclick="openInterviewModal(2)" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition">
-                        <i data-lucide="file-text" class="w-4 h-4 text-emerald-400"></i>
-                        <span data-i18n="interviews.btn_read">Consulter la synthèse</span>
-                    </button>
-                </div>
 
-                <!-- Interview 3 -->
-                <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-blue-500/50 transition flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="px-2.5 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/30 rounded-md text-xs font-semibold" data-i18n="interviews.i3_tag">Réseaux & Flexibilité</span>
-                            <i data-lucide="message-square" class="w-5 h-5 text-blue-400"></i>
+                    <!-- Interview 2 -->
+                    <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition flex flex-col justify-between space-y-4">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded-md text-xs font-semibold" data-i18n="interviews.i2_tag">Sûreté Hydraulique</span>
+                                <i data-lucide="message-square" class="w-5 h-5 text-emerald-400"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white" data-i18n="interviews.i2_title">Interview 2 : Expert Sûreté & Ouvrages</h3>
+                            <p class="text-xs text-slate-400 font-medium" data-i18n="interviews.i2_sub">Ingénieur Expert Sûreté Hydraulique</p>
+                            <p class="text-slate-300 text-xs leading-relaxed" data-i18n="interviews.i2_desc">
+                                Discussion autour de la réglementation des grands barrages, des études de danger et de l'intégration des aléas climatiques extrêmes.
+                            </p>
                         </div>
-                        <h3 class="text-lg font-bold text-white" data-i18n="interviews.i3_title">Interview 3 : Manager Transition Énergétique</h3>
-                        <p class="text-xs text-slate-400 font-medium" data-i18n="interviews.i3_sub">Ingénieur Dispatching & Flexibilité Réseau</p>
-                        <p class="text-slate-300 text-xs leading-relaxed" data-i18n="interviews.i3_desc">
-                            Focus sur le rôle stratégique de l'hydroélectricité dans le stockage d'énergie et l'équilibrage du réseau face à la montée des énergies renouvelables intermittentes.
-                        </p>
+                        <button onclick="openInterviewModal(2)" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition">
+                            <i data-lucide="file-text" class="w-4 h-4 text-emerald-400"></i>
+                            <span data-i18n="interviews.btn_read">Consulter la synthèse</span>
+                        </button>
                     </div>
-                    <button onclick="openInterviewModal(3)" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition">
-                        <i data-lucide="file-text" class="w-4 h-4 text-blue-400"></i>
-                        <span data-i18n="interviews.btn_read">Consulter la synthèse</span>
-                    </button>
-                </div>
 
+                    <!-- Interview 3 -->
+                    <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-blue-500/50 transition flex flex-col justify-between space-y-4">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/30 rounded-md text-xs font-semibold" data-i18n="interviews.i3_tag">Projet Professionnel</span>
+                                <i data-lucide="message-square" class="w-5 h-5 text-blue-400"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white" data-i18n="interviews.i3_title">Interview 3 : Vision Professionnelle</h3>
+                            <p class="text-xs text-slate-400 font-medium" data-i18n="interviews.i3_sub">Conseillère Parcours Pro • EDF</p>
+                            <p class="text-slate-300 text-xs leading-relaxed" data-i18n="interviews.i3_desc">
+                                Entretien d'orientation autour de mon évolution de carrière : bilan de mes acquis terrain et conseil déterminant pour engager une reprise d'études d'ingénieur via le dispositif CAP'CADRE.
+                            </p>
+                        </div>
+                        <button onclick="openInterviewModal(3)" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition">
+                            <i data-lucide="file-text" class="w-4 h-4 text-blue-400"></i>
+                            <span data-i18n="interviews.btn_read">Consulter la synthèse</span>
+                        </button>
+                    </div>
+
+                </div>
             </div>
         </section>
 
@@ -1017,11 +1098,26 @@
                 "skills.sub2_title": "Projets d'Entreprise EDF Hydro",
                 "skills.sub2_subtitle": "Contextes de travail réels dans lesquels j'ai mobilisé mes compétences.",
 
-                "interviews.title": "Interviews de Professionnels des IEG",
-                "interviews.subtitle": "Regards croisés sur les Industries Électriques et Gazières & métiers d'ingénieur",
+                "mobility.title": "Mobilité Internationale Étudiante & Professionnelle",
+                "mobility.subtitle": "Je ne souhaite pas réaliser de mobilité internationale dans le cadre de mon diplôme d'ingénieur. En revanche, j'ai déjà une vision de mon projet professionnel à court, moyen et long terme",
+                "mobility.m1_date": "Aujourd'hui – Septembre 2029",
+                "mobility.m1_loc": "Argelès-Gazost (65) & Toulouse (31)",
+                "mobility.m1_title": "Préparation de diplôme & Évolution Interne",
+                "mobility.m1_desc": "Intégration du dispositif CAP'CADRE : intégration au sein du GEH Adour & Gaves en parallèle de la reprise d'études d'ingénieur à l'ENSEEIHT Toulouse.",
+                "mobility.m2_date": "Horizon 2029",
+                "mobility.m2_loc": "Argelès-Gazost (65)",
+                "mobility.m2_title": "Évolution des Responsabilités",
+                "mobility.m2_desc": "Prise de poste d'ingénieur Coordinateur cadre au sein d'EDF Hydro pour évoluer ensuite sur des postes de Chef de Groupement en exploitation hydraulique.",
+                "mobility.m3_date": "Horizon 2039",
+                "mobility.m3_loc": "Centres d'Ingénierie & État-Major EDF",
+                "mobility.m3_title": "Projets Internationaux & Orientations stratégiques",
+                "mobility.m3_desc": "Ouverture sur des postes en centre d'ingénierie ou en tant que chef de pôle ou au sein d'un état-major d'EDF.",
+
+                "interviews.title": "Interviews de Professionnels",
+                "interviews.subtitle": "Regards croisés sur mon projet professionnel",
                 "interviews.banner_tag": "Réseau & Échanges Métiers",
-                "interviews.banner_title": "Enquêtes Métiers & Vision Industrielle",
-                "interviews.banner_desc": "Série d'entretiens menés sur le site MyJobGlasses auprès de cadres et d'experts de la branche des IEG (Industries Électriques et Gazières) pour éclairer les évolutions technologiques et managériales afin d’en comprendre les enjeux et d’établir des liens avec le secteur de l’hydraulique.",
+                "interviews.banner_title": "Enquêtes Métiers & Vision Professionnelle",
+                "interviews.banner_desc": "Je n'ai pas eu l'opportunité de réaliser des entretiens via la plateforme MyJobGlasses. Toutefois, mon parcours professionnel et mon projet de reprise d'études m'ont permis d'échanger directement avec plusieurs cadres et experts de la branche EDF Hydro. Ces échanges ont été particulièrement enrichissants pour mieux comprendre les missions, les responsabilités et l'impact d'un poste d'ingénieur au sein du groupe. Ils m'ont également apporté une vision concrète des perspectives d'évolution et des enjeux techniques associés à ces fonctions. Les retours d'expérience recueillis ont conforté ma décision de reprendre des études d'ingénieur et ont renforcé ma motivation à poursuivre mon projet professionnel au sein d'EDF.",
                 "interviews.i1_tag": "Exploitation Hydro",
                 "interviews.i1_title": "Interview 1 : Chef d'Exploitation Hydro",
                 "interviews.i1_sub": "Responsable de Groupement d'Usines - EDF Hydro",
@@ -1030,10 +1126,10 @@
                 "interviews.i2_title": "Interview 2 : Expert Sûreté & Ouvrages",
                 "interviews.i2_sub": "Ingénieur Expert Sûreté Hydraulique",
                 "interviews.i2_desc": "Discussion autour de la réglementation des grands barrages, des études de danger et de l'intégration des aléas climatiques extrêmes.",
-                "interviews.i3_tag": "Réseaux & Flexibilité",
-                "interviews.i3_title": "Interview 3 : Manager Transition Énergétique",
-                "interviews.i3_sub": "Ingénieur Dispatching & Flexibilité Réseau",
-                "interviews.i3_desc": "Focus sur le rôle stratégique de l'hydroélectricité dans le stockage d'énergie et l'équilibrage du réseau électrique.",
+                "interviews.i3_tag": "Projet Professionnel",
+                "interviews.i3_title": "Interview 3 : Vision Professionnelle",
+                "interviews.i3_sub": "Conseillère Parcours Pro • EDF",
+                "interviews.i3_desc": "Entretien d'orientation autour de mon évolution de carrière : bilan de mes acquis terrain et conseil déterminant pour engager une reprise d'études d'ingénieur via le dispositif CAP'CADRE.",
                 "interviews.btn_read": "Consulter la synthèse",
 
                 "engagement.title": "Engagement Civique & Associatif",
@@ -1205,15 +1301,31 @@
                 "projects.p2_desc": "Study on modernizing a control-and-command panel used to operate a generating unit able to re-supply certain auxiliary systems that contribute to power grid security.",
                 "projects.p2_tag1": "Electrical Engineering",
                 "projects.p2_tag2": "High-Stakes Project",
-                "projects.p3_title": "Project 3: Hydroelectric Flexibility",
-                "projects.p3_desc": "Modeling the contribution of hydropower plants to energy storage and to balancing tomorrow's power grid.",
-                "projects.p3_tag1": "Modeling",
-                "projects.p3_tag2": "Hydraulics",
-                "interviews.title": "Interviews with IEG Industry Professionals",
-                "interviews.subtitle": "Different perspectives on the Electricity & Gas Industries (IEG) and engineering careers",
-                "interviews.banner_tag": "Network & Career Insights",
-                "interviews.banner_title": "Career Surveys & Industry Vision",
-                "interviews.banner_desc": "A series of interviews with managers and experts from the IEG sector (Electricity & Gas Industries) to shed light on technological and managerial trends.",
+                "projects.p3_title": "Project 3: Troubleshooting & Diagnostics",
+                "projects.p3_desc": "Facility analysis, fault diagnostics and technical recommendations during inspections and troubleshooting operations.",
+                "projects.p3_tag1": "Observation",
+                "projects.p3_tag2": "Analysis & Outage Log",
+
+                "mobility.title": "International Student & Professional Mobility",
+               		 "mobility.subtitle": "I do not wish to undertake international mobility as part of my engineering degree. However, I already have a clear vision of my short-, medium- and long-term career plan",
+                		"mobility.m1_date": "Present – September 2029",
+                		"mobility.m1_loc": "Argelès-Gazost (65) & Toulouse (31)",
+                		"mobility.m1_title": "Degree Preparation & Internal Progression",
+                		"mobility.m1_desc": "Joining the CAP'CADRE program: integrating into the Adour & Gaves Hydroelectric Group (GEH) alongside returning to engineering studies at ENSEEIHT Toulouse.",
+                		"mobility.m2_date": "2029 Horizon",
+                		"mobility.m2_loc": "Argelès-Gazost (65)",
+                		"mobility.m2_title": "Growing Responsibilities",
+                		"mobility.m2_desc": "Taking on a position as a Coordinator Engineer within EDF Hydro, with the goal of progressing toward Power Plant Group Manager roles in hydropower operations.",
+                		"mobility.m3_date": "2039 Horizon",
+                		"mobility.m3_loc": "Engineering Centers & EDF Headquarters",
+                		"mobility.m3_title": "International Projects & Strategic Directions",
+                		"mobility.m3_desc": "Opening up to positions within an engineering center, as a department head, or within an EDF executive management team.",
+
+                		"interviews.title": "Interviews with Professionals",
+                		"interviews.subtitle": "Different perspectives on my career project",
+                		"interviews.banner_tag": "Network & Career Discussions",
+                		"interviews.banner_title": "Career Surveys & Professional Vision",
+                "interviews.banner_desc": "I did not have the opportunity to conduct interviews through the MyJobGlasses platform. However, my professional background and my plan to return to school allowed me to speak directly with several managers and experts within the EDF Hydro division. These discussions were particularly valuable in helping me better understand the missions, responsibilities, and impact of an engineering position within the group. They also gave me a concrete view of career advancement prospects and the technical challenges associated with these roles. The feedback gathered confirmed my decision to return to engineering school and strengthened my motivation to pursue my career project within EDF.",
                 "interviews.i1_tag": "Hydro Operations",
                 "interviews.i1_title": "Interview 1: Hydro Operations Manager",
                 "interviews.i1_sub": "Head of Power Plant Group – EDF Hydro",
@@ -1222,11 +1334,12 @@
                 "interviews.i2_title": "Interview 2: Safety & Structures Expert",
                 "interviews.i2_sub": "Hydraulic Safety Expert Engineer",
                 "interviews.i2_desc": "A discussion on large dam regulations, hazard studies and the integration of extreme climate events.",
-                "interviews.i3_tag": "Grids & Flexibility",
-                "interviews.i3_title": "Interview 3: Energy Transition Manager",
-                "interviews.i3_sub": "Grid Dispatching & Flexibility Engineer",
-                "interviews.i3_desc": "A focus on the strategic role of hydropower in energy storage and power grid balancing.",
+                "interviews.i3_tag": "Career Guidance",
+                "interviews.i3_title": "Interview 3: Career Vision",
+                "interviews.i3_sub": "Career Path Advisor • EDF",
+                "interviews.i3_desc": "Career guidance discussion focused on my professional development: reviewing my field experience and receiving decisive advice to pursue an engineering degree through the CAP'CADRE program.",
                 "interviews.btn_read": "Read the summary",
+
                 "engagement.title": "Civic & Community Engagement",
                 "engagement.subtitle": "Local involvement, community life and mentoring young people",
                 "engagement.photo_title": "Local Roots & Spirit of Sharing",
@@ -1306,7 +1419,6 @@
             if (!langData) return;
             document.querySelectorAll('[data-i18n]').forEach(function(el) {
                 const key = el.getAttribute('data-i18n');
-                // 'in' plutôt qu'un test de valeur : une chaîne vide ("") doit aussi remplacer le texte précédent
                 if (Object.prototype.hasOwnProperty.call(langData, key)) {
                     let text = langData[key];
                     if (text.indexOf('**') !== -1) {
@@ -1318,7 +1430,6 @@
                 }
             });
             document.documentElement.lang = currentLang.toLowerCase();
-            // Si la fenêtre d'une interview est ouverte, on la retraduit
             if (typeof currentInterviewId !== 'undefined' && currentInterviewId) openInterviewModal(currentInterviewId);
         }
 
@@ -1351,8 +1462,6 @@
             const error = document.getElementById('pin-error');
 
             if (pinInput && pinInput.value.trim() === ACCESS_PIN) {
-                // CORRECTIF : on mémorise l'action AVANT de fermer la modale,
-                // car closePinModal() remet pendingAction à null.
                 const action = pendingAction;
                 closePinModal();
                 executeProtectedAction(action);
@@ -1381,8 +1490,6 @@
         }
 
         function downloadFile(url, filename) {
-            // Hébergé sur un serveur (http/https) : on vérifie que le fichier existe
-            // pour afficher un message clair plutôt qu'un échec silencieux.
             if (location.protocol === 'http:' || location.protocol === 'https:') {
                 fetch(url, { method: 'HEAD' }).then(function(r) {
                     if (r.ok) {
@@ -1409,8 +1516,8 @@
                 EN: {"tag": "Hydraulic Safety & Civil Engineering", "title": "Interview 2: Safety & Structures Expert", "sub": "Hydraulic Safety Expert Engineer – EDF Hydro", "body": "<p><strong>Key issues discussed:</strong> Regulation of large dams, monitoring of concrete structures and hazard studies.</p><p><strong>Key takeaways:</strong> Hydraulic safety is EDF's absolute priority. The safety engineer has to connect the geology of the site, fluid mechanics and numerical flood models to guarantee the safety of downstream populations.</p><p><strong>Link with the ENSEEIHT curriculum:</strong> Applying advanced fluid mechanics and structural calculation methods to discharge scenarios for thousand-year floods.</p>"}
             },
             3: {
-                FR: {"tag": "Transition Énergétique & Réseaux", "title": "Interview 3 : Manager Transition Énergétique", "sub": "Ingénieur Dispatching & Flexibilité Réseau", "body": "<p><strong>Enjeux abordés :</strong> Intégration des énergies renouvelables intermittentes (éolien, solaire), rôle des STEP (Pumped Storage) et services système.</p><p><strong>Enseignements clés :</strong> L'hydroélectricité est le véritable 'couteau suisse' de la transition énergétique grâce à sa réactivité (démarrage en quelques minutes). L'ingénieur doit comprendre le marché de l'électricité et les réglages de fréquence/tension en temps réel.</p><p><strong>Lien avec la formation ENSEEIHT :</strong> Maîtrise des réseaux électriques intelligents (Smart Grids), de la régulation automatique des groupes et du stockage d'énergie.</p>"},
-                EN: {"tag": "Energy Transition & Grids", "title": "Interview 3: Energy Transition Manager", "sub": "Grid Dispatching & Flexibility Engineer", "body": "<p><strong>Key issues discussed:</strong> Integrating intermittent renewable energy (wind, solar), the role of pumped-storage plants (PSPs) and ancillary services.</p><p><strong>Key takeaways:</strong> Hydropower is the true 'Swiss Army knife' of the energy transition thanks to its responsiveness (start-up within a few minutes). The engineer must understand the electricity market and real-time frequency/voltage control.</p><p><strong>Link with the ENSEEIHT curriculum:</strong> Mastery of smart grids, automatic regulation of generating units and energy storage.</p>"}
+                FR: {"tag": "Accompagnement & Évolution de Carrière", "title": "Interview 3 : Vision Professionnelle", "sub": "Conseillère Parcours Pro - EDF", "body": "<p><strong>Enjeux abordés :</strong> Bilan de compétences après plus de 10 ans d'expérience opérationnelle en exploitation hydroélectrique, identification des leviers d'évolution vers des fonctions d'encadrement et construction d'un projet de formation diplômante.</p><p><strong>Enseignements clés :</strong> Cet échange a été un véritable déclic. La conseillère parcours pro a mis en valeur la richesse de mon expérience de terrain (management d'équipe, gestion d'astreinte et de crue) et m'a vivement conseillé de reprendre des études d'ingénieur pour franchir un cap et légitimer mon accès à des postes à responsabilités.</p><p><strong>Lien avec la formation ENSEEIHT :</strong> Validation du parcours promotionnel CAP'CADRE en partenariat avec l'ENSEEIHT Toulouse, permettant d'allier montée en compétences scientifiques et intégration progressive dans l'encadrement d'EDF Hydro.</p>"},
+                EN: {"tag": "Career Guidance & Progression", "title": "Interview 3: Career Vision", "sub": "Career Path Advisor – EDF", "body": "<p><strong>Key issues discussed:</strong> Skills assessment after more than 10 years of operational experience in hydropower operations, identifying pathways toward management roles, and building a degree-granting training plan.</p><p><strong>Key takeaways:</strong> This discussion was a true turning point. The career path advisor highlighted the value of my field experience (team leadership, on-call duty, and flood management) and strongly advised me to return to engineering school to take the next step and qualify for senior management positions.</p><p><strong>Link with the ENSEEIHT curriculum:</strong> Validation of the CAP'CADRE internal promotion track in partnership with ENSEEIHT Toulouse, combining advanced scientific training with gradual integration into EDF Hydro management.</p>"}
             }
         };
         let currentInterviewId = null;
